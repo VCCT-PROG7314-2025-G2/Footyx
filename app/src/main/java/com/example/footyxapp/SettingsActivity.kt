@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.launch
 import kotlin.math.sign
+import androidx.core.content.edit
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -30,6 +31,11 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var credentialManager: CredentialManager
     private lateinit var logoutButton: Button
+
+    // Add Shared Preference
+    private val prefs by lazy  {
+        getSharedPreferences("settings_prefs", MODE_PRIVATE)
+    }
 
     //Google Sign-In Option & Request
     private val googleIdOption = GetGoogleIdOption.Builder()
@@ -58,6 +64,11 @@ class SettingsActivity : AppCompatActivity() {
         // Initiate Firebase Variables
         auth = Firebase.auth
         credentialManager = CredentialManager.create(this)
+
+        // Load saved settings
+        loadSettings()
+        setupSwitchListener()
+        setupLanguageListener()
 
         // Hide the default action bar since we have our own header
         supportActionBar?.hide()
@@ -135,5 +146,64 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+
+    // Methods to Manage Settings manipulated by User
+    // Load all settings options
+    private fun loadSettings() {
+        // Switched
+        binding.switchMatchReminders.isChecked = prefs.getBoolean("match_reminders", true)
+        binding.switchGoalsAlerts.isChecked = prefs.getBoolean("goals_alerts", true)
+        binding.switchFinalScoreAlerts.isChecked = prefs.getBoolean("final_score_alerts", true)
+        binding.switchBiometricAuth.isChecked = prefs.getBoolean("biometric_enabled",false)
+
+        // Language Radio Button
+        val savedLanguage = prefs.getString("language","english")
+        when(savedLanguage){
+            "english" -> binding.radioEnglish.isChecked = true
+            "afrikaans" -> binding.radioAfrikaans.isChecked = true
+        }
+    }
+    // Edit All settings options
+    private fun setupSwitchListener(){
+        binding.switchBiometricAuth.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putBoolean(
+                "biometric_enabled",
+                isChecked
+            ) }
+        }
+        binding.switchGoalsAlerts.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putBoolean(
+                "goals_alerts",
+                isChecked
+            ) }
+        }
+        binding.switchFinalScoreAlerts.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putBoolean(
+                "final_score_alerts",
+                isChecked
+            ) }
+        }
+        binding.switchMatchReminders.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putBoolean(
+                "match_reminders",
+                isChecked
+            ) }
+        }
+    }
+    // Save Selected Language
+    private fun setupLanguageListener(){
+        binding.radioEnglish.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putString(
+                "language",
+                "english"
+            ) }
+        }
+        binding.radioAfrikaans.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+            putString(
+                "language",
+                "afrikaans"
+            ) }
+        }
+    }
 
 }
