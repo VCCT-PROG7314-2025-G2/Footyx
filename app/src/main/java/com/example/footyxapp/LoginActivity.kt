@@ -30,7 +30,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.OptIn
+import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.credentials.exceptions.GetCredentialInterruptedException
@@ -136,6 +138,10 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+        // Biometric Login button
+        binding.loginBiometric.setOnClickListener {
+            showBiometricPrompt()
         }
 
     }
@@ -250,6 +256,72 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 //________________________________________________________ Google Sign in Related END____________________________________
+    //-------------------------------------------------------------------------------------------------------------------------------
+    // Biometric Related
+    //-------------------------------------------------------------------------------------------------------------------------------
 
+    // Biometric Authentication Setup
+    private fun showBiometricPrompt(){
+        val executor = ContextCompat.getMainExecutor(this)
+        val biometricPrompt = BiometricPrompt(
+            this,
+            executor,
+            object : BiometricPrompt.AuthenticationCallback(){
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    handleBiometricLogin()
+                }
+
+                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(this@LoginActivity, "Biometric error: $errString", Toast.LENGTH_SHORT).show()
+                }
+            })
+        val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Biometric Login")
+            .setSubtitle("Authentication to Sign In to Footyx")
+            .setNegativeButtonText("Cancel")
+            .build()
+        biometricPrompt.authenticate(promptInfo)
+    }
+
+    // HandleBiometric Login
+    private fun handleBiometricLogin(){
+        auth.signInAnonymously()
+            .addOnSuccessListener { authResult ->
+                val user = authResult.user
+                val uid = user?.uid ?: return@addOnSuccessListener
+
+                val db = FirebaseFirestore.getInstance()
+                val userDoc = hashMapOf(
+                    "uid" to uid,
+                    "createdAt" to FieldValue.serverTimestamp(),
+                    "email" to null,
+                    "name" to null,
+                    "password" to null,
+                    "photoUrl" to null
+                )
+                // Create user document if it does not exist
+                db.collection("users").document(uid)
+                    .get()
+                    .addOnSuccessListener { snapshot ->
+                        if(!snapshot.exists()){
+                            db.collection("users").document(uid).set(userDoc)
+                        }
+                    }
+                // Save locally
+                val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                prefs.edit().apply{
+                    putBoolean("is_logged_in", true)
+                    putString("user_uid",uid)
+                    apply()
+                }
+
+                Toast.makeText(this, "Logged in with Biometrics", Toast.LENGTH_SHORT).show()
+                navigateToHome()
+
+            }
+            .addOnFailureListener { Toast.makeText(this, "Biometric Login failed", Toast.LENGTH_SHORT).show() }
+    }
 
 }

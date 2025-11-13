@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://student.uwc.ac.za/" />
+
     <ImageView
         android:id="@+id/background_image2"
         android:layout_width="0dp"
@@ -164,6 +170,16 @@
 
         <ImageButton
             android:id="@+id/login_google_sign_in_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/google_sign_in" />
+
+        <ImageButton
+            android:id="@+id/login_biometric"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
