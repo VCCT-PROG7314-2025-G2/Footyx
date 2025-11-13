@@ -193,16 +193,22 @@ class SettingsActivity : AppCompatActivity() {
     // Save Selected Language
     private fun setupLanguageListener(){
         binding.radioEnglish.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
-            putString(
-                "language",
-                "english"
-            ) }
+            if(isChecked){
+                putString(
+                    "language",
+                    "english"
+                ).apply() }
+            }
+
         }
         binding.radioAfrikaans.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
-            putString(
-                "language",
-                "afrikaans"
-            ) }
+            if(isChecked){
+                putString(
+                    "language",
+                    "afrikaans"
+                ).apply() }
+            }
+
         }
     }
 
