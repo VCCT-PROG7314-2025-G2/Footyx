@@ -6,12 +6,37 @@
     android:layout_height="match_parent"
     android:background="@drawable/black_background"
     android:orientation="vertical"
+    android:visibility="visible"
     tools:context=".ui.leagues.Leagues">
 
+    <!-- Search Results RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_search_results"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_league_search" />
+
+    <!-- Season Selection Card -->
+
+    <!-- Progress Indicator for Search -->
+    <ProgressBar
+        android:id="@+id/progress_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+    <!-- League Header Card -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/league_header_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
+        android:visibility="visible"
         app:cardBackgroundColor="#1E1E1E"
         app:cardCornerRadius="12dp">
 
@@ -30,23 +55,81 @@
 
             <TextView
                 android:id="@+id/league_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:text="Ligue 1 - 2023" />
+
+            <ImageButton
+                android:id="@+id/btn_toggle_season"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Toggle season selection"
+                android:padding="8dp"
+                android:src="@android:drawable/ic_menu_more"
+                android:tint="@android:color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Progress Indicator for Standings -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/season_selection_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#1E1E1E"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Select Season"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_seasons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_season" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progress_standings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+    <!-- Standings Table Header -->
     <LinearLayout
+        android:id="@+id/standings_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingBottom="8dp">
+        android:paddingBottom="8dp"
+        android:visibility="visible">
 
         <TextView
             style="@style/Widget.AppCompat.TextView.SpinnerItem"
@@ -85,11 +168,26 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Standings Legend -->
+    <include
+        android:id="@+id/standings_legend"
+        layout="@layout/item_standings_legend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible" />
+
+    <!-- Standings RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/standings_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="12dp"
         android:layout_weight="1"
+        android:background="@drawable/item_background"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_standing_row" />
 

@@ -5,6 +5,8 @@ import com.example.footyxapp.data.model.PlayerSearchResponse
 import com.example.footyxapp.data.model.TeamSearchResponse
 import com.example.footyxapp.data.model.TeamLeaguesResponse
 import com.example.footyxapp.data.model.TeamStatisticsResponse
+import com.example.footyxapp.data.model.LeagueSearchResponse
+import com.example.footyxapp.data.model.StandingsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -60,6 +62,25 @@ interface FootballApiService {
         @Query("season") season: Int,
         @Query("team") teamId: Int
     ): Response<TeamStatisticsResponse>
+
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+
+    @GET("leagues")
+    suspend fun searchLeagues(
+        @Header("X-RapidAPI-Key") apiKey: String,
+        @Header("X-RapidAPI-Host") host: String = "v3.football.api-sports.io",
+        @Query("search") searchQuery: String
+    ): Response<LeagueSearchResponse>
+
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+
+    @GET("standings")
+    suspend fun getStandings(
+        @Header("X-RapidAPI-Key") apiKey: String,
+        @Header("X-RapidAPI-Host") host: String = "v3.football.api-sports.io",
+        @Query("league") leagueId: Int,
+        @Query("season") season: Int
+    ): Response<StandingsResponse>
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
