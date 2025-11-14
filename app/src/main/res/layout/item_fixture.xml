@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#1E1E1E"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Match Teams and Score -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Home Team -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/home_team_logo"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="Home team logo"
+                    tools:src="@drawable/ic_team_placeholder" />
+
+                <TextView
+                    android:id="@+id/home_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Manchester City" />
+            </LinearLayout>
+
+            <!-- Score -->
+            <TextView
+                android:id="@+id/match_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                tools:text="2 - 1" />
+
+            <!-- Away Team -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end">
+
+                <TextView
+                    android:id="@+id/away_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Everton" />
+
+                <ImageView
+                    android:id="@+id/away_team_logo"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="Away team logo"
+                    tools:src="@drawable/ic_team_placeholder" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Match Status -->
+        <TextView
+            android:id="@+id/match_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:textColor="#AFAFAF"
+            android:textSize="12sp"
+            tools:text="Full Time" />
+
+        <!-- Match Date -->
+        <TextView
+            android:id="@+id/match_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="#AFAFAF"
+            android:textSize="12sp"
+            tools:text="Sat, 23 Dec 2023 15:00" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
