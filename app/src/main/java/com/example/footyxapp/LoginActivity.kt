@@ -128,6 +128,12 @@ class LoginActivity : AppCompatActivity() {
                             apply()
                         }
 
+                        // Initialize FCM token for notifications
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            user.uid
+                        )
+
                         // Start MainActivity after login is successful
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -219,6 +225,15 @@ class LoginActivity : AppCompatActivity() {
                         }
                        apply()
                     }
+                    
+                    // Initialize FCM token for notifications
+                    if (user != null) {
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            user.uid
+                        )
+                    }
+                    
                     updateUI(user)
                 }else{
                     Log.w(TAG, "signInWithCredential:failure", task.exception)

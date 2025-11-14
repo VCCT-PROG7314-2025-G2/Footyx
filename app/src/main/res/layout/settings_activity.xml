@@ -97,20 +97,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Notifications"
+                android:text="@string/settings_notifications"
                 android:textColor="@color/black_FootyX"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Match Reminders -->
+            <!-- Push Notifications Toggle -->
             <LinearLayout
+                android:id="@+id/layout_push_notifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/settings_push_notifications"
+                    android:textColor="@color/black_FootyX"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:id="@+id/switch_push_notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black_FootyX"
+                    android:checked="false"
+                    android:textColorLink="@color/black_FootyX" />
+
+            </LinearLayout>
+            
+            <!-- Hidden: Match Reminders (kept for backwards compatibility) -->
+            <LinearLayout
+                android:id="@+id/layout_match_reminders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:paddingEnd="8dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
@@ -130,15 +161,17 @@
 
             </LinearLayout>
 
-            <!-- Goals Alerts -->
+            <!-- Hidden: Goals Alerts (kept for backwards compatibility) -->
             <LinearLayout
+                android:id="@+id/layout_goals_alerts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:paddingEnd="8dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
@@ -157,15 +190,17 @@
 
             </LinearLayout>
 
-            <!-- Final Score Alerts -->
+            <!-- Hidden: Final Score Alerts (kept for backwards compatibility) -->
             <LinearLayout
+                android:id="@+id/layout_final_score_alerts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="8dp"
-                android:paddingEnd="8dp">
+                android:paddingEnd="8dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"

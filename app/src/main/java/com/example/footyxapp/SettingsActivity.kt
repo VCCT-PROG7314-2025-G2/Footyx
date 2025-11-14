@@ -14,11 +14,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.util.Log
 import androidx.media3.common.util.UnstableApi
 import com.example.footyxapp.LoginActivity
+import com.example.footyxapp.data.model.NotificationPreferences
 import com.example.footyxapp.databinding.SettingsActivityBinding
+import com.example.footyxapp.utils.MatchReminderScheduler
+import com.example.footyxapp.utils.NotificationTokenManager
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlin.math.sign
 import androidx.core.content.edit
@@ -31,10 +35,19 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var credentialManager: CredentialManager
     private lateinit var logoutButton: Button
+    private val firestore = FirebaseFirestore.getInstance()
 
     // Add Shared Preference
     private val prefs by lazy  {
         getSharedPreferences("settings_prefs", MODE_PRIVATE)
+    }
+    
+    private val userPrefs by lazy {
+        getSharedPreferences("user_prefs", MODE_PRIVATE)
+    }
+    
+    private fun getUserId(): String? {
+        return userPrefs.getString("user_uid", null)
     }
 
     //Google Sign-In Option & Request
@@ -150,11 +163,11 @@ class SettingsActivity : AppCompatActivity() {
     // Methods to Manage Settings manipulated by User
     // Load all settings options
     private fun loadSettings() {
-        // Switched
-        binding.switchMatchReminders.isChecked = prefs.getBoolean("match_reminders", true)
-        binding.switchGoalsAlerts.isChecked = prefs.getBoolean("goals_alerts", true)
-        binding.switchFinalScoreAlerts.isChecked = prefs.getBoolean("final_score_alerts", true)
-        binding.switchBiometricAuth.isChecked = prefs.getBoolean("biometric_enabled",false)
+        // Load push notifications preference
+        val pushNotificationsEnabled = prefs.getBoolean("push_notifications_enabled", false)
+        binding.switchPushNotifications.isChecked = pushNotificationsEnabled
+        
+        binding.switchBiometricAuth.isChecked = prefs.getBoolean("biometric_enabled", false)
 
         // Language Radio Button
         val savedLanguage = prefs.getString("language","english")
@@ -162,7 +175,52 @@ class SettingsActivity : AppCompatActivity() {
             "english" -> binding.radioEnglish.isChecked = true
             "afrikaans" -> binding.radioAfrikaans.isChecked = true
         }
+        
+        // Load notification preferences from Firestore
+        loadNotificationPreferencesFromFirestore()
     }
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun loadNotificationPreferencesFromFirestore() {
+        val userId = getUserId() ?: return
+        
+        firestore.collection("users")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { doc ->
+                if (doc.exists() && doc.contains("notificationPreferences")) {
+                    val prefsMap = doc.get("notificationPreferences") as? Map<*, *>
+                    val preferences = NotificationPreferences.fromMap(prefsMap as? Map<String, Any>)
+                    binding.switchPushNotifications.isChecked = preferences.pushNotificationsEnabled
+                    prefs.edit().putBoolean("push_notifications_enabled", preferences.pushNotificationsEnabled).apply()
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error loading notification preferences from Firestore", e)
+            }
+    }
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun saveNotificationPreferencesToFirestore(enabled: Boolean) {
+        val userId = getUserId() ?: return
+        
+        val preferences = NotificationPreferences(pushNotificationsEnabled = enabled)
+        
+        firestore.collection("users")
+            .document(userId)
+            .update("notificationPreferences", preferences.toMap())
+            .addOnSuccessListener {
+                Log.d(TAG, "Notification preferences saved to Firestore")
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error saving notification preferences to Firestore", e)
+            }
+    }
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
     // Edit All settings options
     private fun setupSwitchListener(){
         binding.switchBiometricAuth.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
@@ -171,23 +229,22 @@ class SettingsActivity : AppCompatActivity() {
                 isChecked
             ) }
         }
-        binding.switchGoalsAlerts.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
-            putBoolean(
-                "goals_alerts",
-                isChecked
-            ) }
-        }
-        binding.switchFinalScoreAlerts.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
-            putBoolean(
-                "final_score_alerts",
-                isChecked
-            ) }
-        }
-        binding.switchMatchReminders.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
-            putBoolean(
-                "match_reminders",
-                isChecked
-            ) }
+        
+        // Single push notifications toggle
+        binding.switchPushNotifications.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("push_notifications_enabled", isChecked).apply()
+            saveNotificationPreferencesToFirestore(isChecked)
+            
+            val userId = getUserId()
+            if (userId != null) {
+                if (isChecked) {
+                    // Schedule periodic work for match reminders
+                    MatchReminderScheduler.schedulePeriodicWork(this, userId)
+                } else {
+                    // Cancel all reminders when disabled
+                    MatchReminderScheduler.cancelAllReminders(this)
+                }
+            }
         }
     }
     // Save Selected Language

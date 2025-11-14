@@ -53,6 +53,27 @@ class MainActivity : AppCompatActivity() {
         
         // Set up global search functionality
         setupGlobalSearch()
+        
+        // Initialize notification system
+        initializeNotificationSystem()
+    }
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun initializeNotificationSystem() {
+        val userPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val userId = userPrefs.getString("user_uid", null)
+        
+        if (userId != null) {
+            // Check if push notifications are enabled
+            val settingsPrefs = getSharedPreferences("settings_prefs", MODE_PRIVATE)
+            val pushNotificationsEnabled = settingsPrefs.getBoolean("push_notifications_enabled", false)
+            
+            if (pushNotificationsEnabled) {
+                // Schedule periodic work for match reminders
+                com.example.footyxapp.utils.MatchReminderScheduler.schedulePeriodicWork(this, userId)
+            }
+        }
     }
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
