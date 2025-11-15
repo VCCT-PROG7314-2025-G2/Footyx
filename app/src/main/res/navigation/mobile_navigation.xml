@@ -32,6 +32,10 @@
         android:name="com.example.footyxapp.ui.match.Match"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_match" >
+        <argument
+            android:name="fixtureId"
+            app:argType="integer"
+            android:defaultValue="-1" />
         <action android:id="@+id/action_match_to_player" app:destination="@id/player" />
         <action android:id="@+id/action_match_to_team" app:destination="@id/team" />
         <action android:id="@+id/action_match_to_home2" app:destination="@id/home2" />

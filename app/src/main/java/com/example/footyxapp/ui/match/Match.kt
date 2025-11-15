@@ -63,8 +63,14 @@ class Match : Fragment(), SearchableFragment {
         setupObservers()
         setupFixtureSearch()
         
-        // Load a demo match (fixture ID 1035086 - example from API docs)
-        matchViewModel.loadMatchDetails(1035086)
+        // Get fixture ID from arguments, default to demo match if not provided
+        val fixtureId = arguments?.getInt("fixtureId", -1) ?: -1
+        if (fixtureId != -1) {
+            matchViewModel.loadMatchDetails(fixtureId)
+        } else {
+            // Load a demo match (fixture ID 1035086 - example from API docs)
+            matchViewModel.loadMatchDetails(1035086)
+        }
         
         return root
     }

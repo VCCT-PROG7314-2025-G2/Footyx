@@ -11,6 +11,7 @@ import com.example.footyxapp.data.model.FixtureResponse
 import com.example.footyxapp.data.model.FixtureStatisticsResponse
 import com.example.footyxapp.data.model.FixtureEventsResponse
 import com.example.footyxapp.data.model.OddsResponse
+import com.example.footyxapp.data.model.TransferResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -154,6 +155,24 @@ interface FootballApiService {
         @Query("to") to: String? = null,
         @Query("status") status: String? = null
     ): Response<FixtureResponse>
+
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+
+    @GET("transfers")
+    suspend fun getPlayerTransfers(
+        @Header("X-RapidAPI-Key") apiKey: String,
+        @Header("X-RapidAPI-Host") host: String = "v3.football.api-sports.io",
+        @Query("player") playerId: Int
+    ): Response<TransferResponse>
+
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+
+    @GET("transfers")
+    suspend fun getTeamTransfers(
+        @Header("X-RapidAPI-Key") apiKey: String,
+        @Header("X-RapidAPI-Host") host: String = "v3.football.api-sports.io",
+        @Query("team") teamId: Int
+    ): Response<TransferResponse>
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
