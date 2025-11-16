@@ -385,9 +385,31 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
+
             </LinearLayout>
 
+        <!-- Logout Button at Bottom -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/formation_percentage_background"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/edit_user_btn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#00FFFFFF"
+                android:text="Edit User Details"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
+    </LinearLayout>
 
     </ScrollView>
 

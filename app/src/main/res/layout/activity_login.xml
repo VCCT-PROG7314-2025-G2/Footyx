@@ -178,14 +178,38 @@
             android:background="#00FFFFFF"
             app:srcCompat="@drawable/google_sign_in" />
 
-        <ImageButton
-            android:id="@+id/login_biometric"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+            android:textStyle="bold" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_footyx_background"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/login_biometric"
+            android:layout_width="197dp"
+            android:layout_height="wrap_content"
             android:background="#00FFFFFF"
-            app:srcCompat="@drawable/google_sign_in" />
+            android:text="@string/biometric_login_sign_in_bttn"
+            android:textColor="@color/white_FootyX" />
+    </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

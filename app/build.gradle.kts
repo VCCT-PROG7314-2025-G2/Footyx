@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.preference)
     implementation(libs.androidx.activity)
+    implementation("androidx.work:work-runtime-ktx:2.11.0")
 
     implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.firestore)

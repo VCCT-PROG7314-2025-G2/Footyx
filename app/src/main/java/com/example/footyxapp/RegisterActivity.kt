@@ -16,6 +16,11 @@ import com.example.footyxapp.databinding.ActivityLoginBinding
 import com.example.footyxapp.databinding.ActivityMainBinding
 import com.example.footyxapp.databinding.ActivityRegisterBinding
 import java.util.UUID
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -59,25 +64,40 @@ class RegisterActivity : AppCompatActivity() {
 
         registerButton.setOnClickListener {
             val name = inputName.text.toString().trim()
-            val email = inputEmail.text.toString().trim()
+            val email = inputEmail.text.toString().trim().lowercase()
             val password = inputPassword.text.toString().trim()
             val confirmPassword = inputConfirmPassword.text.toString().trim()
 
             if (validateInput(name, email, password, confirmPassword)) {
-                // Handle registration logic here
-                // After successful registration, go back to login
-                val user = User(uid = UUID.randomUUID().toString(), email=email,password=password,name=name)
-
-                userViewModel.insertUser(user).observe(this){ isSuccess ->
-                    if(isSuccess){
-                        Toast.makeText(this,"User registered succesfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, LoginActivity::class.java))
-                        finish()
-                    }else{
-                        Toast.makeText(this,"Registration Failed", Toast.LENGTH_SHORT).show()
+                val auth = Firebase.auth
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val currentUser = auth.currentUser
+                            val uid = currentUser?.uid ?: UUID.randomUUID().toString()
+                            val db = FirebaseFirestore.getInstance()
+                            val userData = mapOf(
+                                "uid" to uid,
+                                "email" to email,
+                                "name" to name,
+                                "password" to password,
+                                "photoUrl" to "",
+                                "createdAt" to FieldValue.serverTimestamp()
+                            )
+                            db.collection("users").document(uid)
+                                .set(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "User registered succesfully", Toast.LENGTH_SHORT).show()
+                                    startActivity(Intent(this, LoginActivity::class.java))
+                                    finish()
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                            Toast.makeText(this, task.exception?.localizedMessage ?: "Registration Failed", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
-
             }
         }
 

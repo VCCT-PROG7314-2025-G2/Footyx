@@ -104,6 +104,7 @@
     <string name="login_info">Get news and statistics of your favourite teams now</string>
     <string name="login_register_bttn">New User ? Sign Up Here</string>
     <string name="login_sign_in_bttn">Sign In</string>
+    <string name="biometric_login_sign_in_bttn">Biometric Login</string>
 
     <!-- Register Page Strings -->
     <string name="register_welcome">Welcome !</string>
@@ -137,5 +138,10 @@
     <string name="recommend_button_skip">Skip</string>
     <string name="or_separator">OR</string> <!-- If you use it -->
     <string name="team_logo_desc">Team logo</string> <!-- For item_selectable_team -->
+
+    <!-- Edit Page Strings -->
+    <string name="edit_welcome">Update User Details</string>
+    <string name="edit_info">Get news and statistics of your favourite teams now</string>
+    <string name="edit_submit_bttn">Submit</string>
 
 </resources>
