@@ -39,8 +39,8 @@ class TeamViewModel : ViewModel() {
     val isLoadingStatistics: LiveData<Boolean> = _isLoadingStatistics
     
     // Live data for errors
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
     
     // Search job for cancellation
     private var searchJob: Job? = null

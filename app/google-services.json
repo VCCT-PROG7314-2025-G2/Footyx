@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "538104946492-loik9i4fr6ggt6nt90dh61muhg27rrtg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.footyxapp",
+            "certificate_hash": "19375b24f22e1ae98246df9e647ea490689c2b76"
+          }
+        },
+        {
           "client_id": "538104946492-rnfeh3iac5pl60mioig7va4h2l01osp9.apps.googleusercontent.com",
           "client_type": 3
         }
