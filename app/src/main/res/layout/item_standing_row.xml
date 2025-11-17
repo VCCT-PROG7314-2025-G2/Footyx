@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1E1E1E"
+    android:background="#001E1E1E"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="16dp"
@@ -20,12 +20,12 @@
     <TextView
         android:id="@+id/text_rank"
         style="@style/Widget.AppCompat.TextView.SpinnerItem"
-        android:layout_width="24dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        tools:text="1" />
+        tools:text="10" />
 
     <ImageView
         android:id="@+id/team_logo_row"

@@ -53,6 +53,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"/>
+        <activity
+            android:name=".EditActivity"
+            android:exported="false"/>
         
         <!-- Firebase Cloud Messaging Service -->
         <service

@@ -109,23 +109,50 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginSignInBttn.setOnClickListener {
-            val email = inputEmail.text.toString()
-            val password = inputPassword.text.toString()
+            val email = inputEmail.text.toString().trim().lowercase()
+            val password = inputPassword.text.toString().trim()
 
-            // Check input validation
             if (validateInput(email, password)) {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            user?.let {
+                                val db = FirebaseFirestore.getInstance()
+                                val userRef = db.collection("users").document(it.uid)
+                                userRef.get().addOnSuccessListener { doc ->
+                                    if (!doc.exists()) {
+                                        val userData = mapOf(
+                                            "uid" to it.uid,
+                                            "name" to "",
+                                            "email" to email,
+                                            "photoUrl" to "",
+                                            "password" to password,
+                                            "createdAt" to FieldValue.serverTimestamp()
+                                        )
+                                        userRef.set(userData)
+                                    }
+                                }
+                            }
 
-                // Validate Login
-                userViewModel.validateLogin(email, password).observe(this) { user ->
-                    if (user != null) {
-                        Toast.makeText(this, "Login successful! Welcome ${user.name}", Toast.LENGTH_SHORT).show()
+                            val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                            with(sharedPref.edit()) {
+                                putBoolean("is_logged_in", true)
+                                putString("user_uid", user?.uid ?: "")
+                                apply()
+                            }
 
-                        // Ensure user ID is saved
-                        val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
-                        with(sharedPref.edit()) {
-                            putBoolean("is_logged_in", true)
-                            putString("user_uid", user.uid.toString())
-                            apply()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            val msg = when (val ex = task.exception) {
+                                is com.google.firebase.auth.FirebaseAuthInvalidUserException -> "Account not found. Please register."
+                                is com.google.firebase.auth.FirebaseAuthInvalidCredentialsException -> "Incorrect password."
+                                is com.google.firebase.auth.FirebaseAuthException -> ex.localizedMessage ?: "Login failed"
+                                else -> ex?.localizedMessage ?: "Login failed"
+                            }
+                            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                         }
 
                         // Initialize FCM token for notifications
@@ -142,7 +169,6 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
                     }
-                }
             }
         }
         // Biometric Login button
@@ -311,10 +337,10 @@ class LoginActivity : AppCompatActivity() {
                 val userDoc = hashMapOf(
                     "uid" to uid,
                     "createdAt" to FieldValue.serverTimestamp(),
-                    "email" to null,
-                    "name" to null,
-                    "password" to null,
-                    "photoUrl" to null
+                    "email" to "",
+                    "name" to "",
+                    "password" to "",
+                    "photoUrl" to ""
                 )
                 // Create user document if it does not exist
                 db.collection("users").document(uid)
@@ -328,7 +354,7 @@ class LoginActivity : AppCompatActivity() {
                 val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
                 prefs.edit().apply{
                     putBoolean("is_logged_in", true)
-                    putString("user_uid",uid)
+                    putString("user_uid",uid.toString())
                     apply()
                 }
 

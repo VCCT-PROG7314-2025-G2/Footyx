@@ -35,6 +35,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var credentialManager: CredentialManager
     private lateinit var logoutButton: Button
+    private lateinit var editButton : Button
     private val firestore = FirebaseFirestore.getInstance()
 
     // Add Shared Preference
@@ -72,6 +73,7 @@ class SettingsActivity : AppCompatActivity() {
         // Initialize Views
         //---------------------------------------------------------------------------------------------------------------------------------------//
         logoutButton = findViewById(R.id.btn_logout)
+        editButton = findViewById(R.id.edit_user_btn)
 
 
         // Initiate Firebase Variables
@@ -97,6 +99,12 @@ class SettingsActivity : AppCompatActivity() {
         //
         logoutButton.setOnClickListener {
             performLogout()
+        }
+
+        //Redirect to Edit User Details
+        editButton.setOnClickListener {
+            val intent = Intent(this, EditActivity::class.java)
+            startActivity(intent)
         }
     }
 

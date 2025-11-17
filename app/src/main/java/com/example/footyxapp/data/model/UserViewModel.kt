@@ -42,4 +42,30 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
             }
         return result
     }
+
+    fun updateUser(uid: String, name: String?, email: String?, password: String?): LiveData<Boolean> {
+        val result = MutableLiveData<Boolean>()
+        val updates = mutableMapOf<String, Any>()
+
+        if (!name.isNullOrBlank()) {
+            updates["name"] = name
+        }
+        if (!email.isNullOrBlank()) {
+            updates["email"] = email.lowercase()
+        }
+        if (!password.isNullOrBlank()) {
+            updates["password"] = password
+        }
+
+        if (updates.isEmpty()) {
+            result.value = true
+            return result
+        }
+
+        userCollection.document(uid)
+            .update(updates)
+            .addOnSuccessListener { result.value = true }
+            .addOnFailureListener { result.value = false }
+        return result
+    }
 }
