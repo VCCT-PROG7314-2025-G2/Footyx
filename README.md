@@ -2,6 +2,8 @@
 
 [![Android](https://img.shields.io/badge/Platform-Android-green?logo=android)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Language-Kotlin-7f52ff?logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Room](https://img.shields.io/badge/Room-0078D4?logo=sqlite&logoColor=white)](https://developer.android.com/training/data-storage/room)
+[![Firebase](https://img.shields.io/badge/Firebase-DD2C00?logo=firebase&logoColor=white)](https://firebase.google.com)
 
 ### A modern Android app for football fans — live scores, fixtures, teams, player stats, and personalized notifications.
 
@@ -13,6 +15,7 @@ Functional Authentication
 * User registration
 * Log in
 * Log out
+* Biometric Authentication
 
 Search Functionality
 * Player search
@@ -29,6 +32,22 @@ Stats
 Favourites (For easy of accessibility)
 * Favourite Teams 
 * Favourite Players
+
+Push Notifications
+* Match Reminder
+* Score Updates
+* Final Score notification
+
+Offline Mode Sync
+* Logout
+* Remove Favourites
+
+Multi-Language Support
+* English
+* Afrikaans
+
+User Defined Features
+* TODO
 
 ---
 
@@ -135,6 +154,13 @@ After favouriting a team and/or player in settings → preferences → favourite
 ## Contributions
 
 [![Contributors](https://contrib.rocks/image?repo=JoseLubota/Footyx)](https://github.com/JoseLubota/Footyx/graphs/contributors)
+
+---
+
+## AI Declaration
+
+[![AI Declaration](https://img.shields.io/badge/AI%20Declaration-6A1B9A?style=for-the-badge&logo=ai&logoColor=white)](AI_Declaration.md)
+
 
 ---
 
