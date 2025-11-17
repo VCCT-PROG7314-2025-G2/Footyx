@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/home2">
+
+    <fragment
+        android:id="@+id/player"
+        android:name="com.example.footyxapp.ui.player.Player"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" >
+        <action android:id="@+id/action_player_to_team" app:destination="@id/team" />
+        <action android:id="@+id/action_player_to_match" app:destination="@id/match" />
+        <action android:id="@+id/action_player_to_home2" app:destination="@id/home2" />
+        <action android:id="@+id/action_player_to_leagues" app:destination="@id/leagues" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/team"
+        android:name="com.example.footyxapp.ui.team.Team"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <action android:id="@+id/action_team_to_player" app:destination="@id/player" />
+        <action android:id="@+id/action_team_to_match" app:destination="@id/match" />
+        <action android:id="@+id/action_team_to_home2" app:destination="@id/home2" />
+        <action android:id="@+id/action_team_to_leagues" app:destination="@id/leagues" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/match"
+        android:name="com.example.footyxapp.ui.match.Match"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_match" >
+        <argument
+            android:name="fixtureId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action android:id="@+id/action_match_to_player" app:destination="@id/player" />
+        <action android:id="@+id/action_match_to_team" app:destination="@id/team" />
+        <action android:id="@+id/action_match_to_home2" app:destination="@id/home2" />
+        <action android:id="@+id/action_match_to_leagues" app:destination="@id/leagues" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.footyxapp.ui.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action android:id="@+id/action_home2_to_player" app:destination="@id/player" />
+        <action android:id="@+id/action_home2_to_team" app:destination="@id/team" />
+        <action android:id="@+id/action_home2_to_match" app:destination="@id/match" />
+        <action android:id="@+id/action_home2_to_leagues" app:destination="@id/leagues" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/leagues"
+        android:name="com.example.footyxapp.ui.leagues.Leagues"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_leagues" >
+        <action android:id="@+id/action_leagues_to_player" app:destination="@id/player" />
+        <action android:id="@+id/action_leagues_to_team" app:destination="@id/team" />
+        <action android:id="@+id/action_leagues_to_match" app:destination="@id/match" />
+        <action android:id="@+id/action_leagues_to_home2" app:destination="@id/home2" />
+    </fragment>
+
+</navigation>

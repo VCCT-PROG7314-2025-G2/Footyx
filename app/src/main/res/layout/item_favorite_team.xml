@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imgTeamLogo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:contentDescription="Team Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_team_placeholder" />
+
+        <TextView
+            android:id="@+id/txtTeamName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnSetDefault"
+            app:layout_constraintStart_toEndOf="@id/imgTeamLogo"
+            app:layout_constraintTop_toTopOf="@id/imgTeamLogo"
+            tools:text="Paris Saint Germain" />
+
+        <TextView
+            android:id="@+id/txtTeamCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="#AFAFAF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/txtTeamName"
+            app:layout_constraintStart_toStartOf="@id/txtTeamName"
+            app:layout_constraintTop_toBottomOf="@id/txtTeamName"
+            tools:text="France" />
+
+        <TextView
+            android:id="@+id/txtDefaultBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/type_badge_background"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="DEFAULT"
+            android:textColor="@color/primary_green"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/txtTeamName"
+            app:layout_constraintTop_toBottomOf="@id/txtTeamCountry"
+            tools:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btnSetDefault"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Set as default team"
+            android:src="@drawable/ic_star_outline"
+            app:tint="@color/primary_green"
+            app:layout_constraintBottom_toBottomOf="@id/imgTeamLogo"
+            app:layout_constraintEnd_toStartOf="@id/btnRemove"
+            app:layout_constraintTop_toTopOf="@id/imgTeamLogo" />
+
+        <ImageButton
+            android:id="@+id/btnRemove"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Remove from favorites"
+            android:src="@drawable/ic_delete"
+            app:tint="#FF5252"
+            app:layout_constraintBottom_toBottomOf="@id/imgTeamLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgTeamLogo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

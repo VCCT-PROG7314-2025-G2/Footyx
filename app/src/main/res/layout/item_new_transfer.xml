@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Player Photo (Optional) -->
+    <ImageView
+        android:id="@+id/image_player_photo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/player_photo_desc" />
+
+    <!-- Player Name and Transfer Type -->
+    <TextView
+        android:id="@+id/text_player_name_transfer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image_player_photo"
+        app:layout_constraintTop_toTopOf="@id/image_player_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Kylian Mbappé" />
+
+    <TextView
+        android:id="@+id/text_transfer_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#AFAFAF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/text_player_name_transfer"
+        app:layout_constraintTop_toBottomOf="@id/text_player_name_transfer"
+        tools:text="Permanent Deal" />
+
+
+    <ImageView
+        android:id="@+id/image_from_team_logo"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/text_transfer_type"
+        app:layout_constraintTop_toBottomOf="@id/text_transfer_type"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/transfer_from_team_logo_desc"/>
+
+    <TextView
+        android:id="@+id/text_from_team_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="#CFCFCF"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/image_from_team_logo"
+        app:layout_constraintTop_toTopOf="@id/image_from_team_logo"
+        app:layout_constraintBottom_toBottomOf="@id/image_from_team_logo"
+        tools:text="Paris SG" />
+
+    <!-- Transfer Arrow -->
+    <ImageView
+        android:id="@+id/image_transfer_arrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/ic_transfer_arrow"
+        app:tint="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/text_from_team_name"
+        app:layout_constraintTop_toTopOf="@id/image_from_team_logo"
+        app:layout_constraintBottom_toBottomOf="@id/image_from_team_logo"/>
+
+    <!-- To Team -->
+    <ImageView
+        android:id="@+id/image_to_team_logo"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/image_transfer_arrow"
+        app:layout_constraintTop_toTopOf="@id/image_from_team_logo"
+        app:layout_constraintBottom_toBottomOf="@id/image_from_team_logo"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/transfer_to_team_logo_desc"/>
+
+    <TextView
+        android:id="@+id/text_to_team_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="#CFCFCF"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/image_to_team_logo"
+        app:layout_constraintTop_toTopOf="@id/image_to_team_logo"
+        app:layout_constraintBottom_toBottomOf="@id/image_to_team_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Real Madrid" />
+
+    <!-- Transfer Date and Fee (Optional) -->
+    <TextView
+        android:id="@+id/text_transfer_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#AFAFAF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/image_from_team_logo"
+        app:layout_constraintTop_toBottomOf="@id/image_from_team_logo"
+        tools:text="July 1, 2024" />
+
+    <TextView
+        android:id="@+id/text_transfer_fee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:textColor="#AFAFAF"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_from_team_logo"
+        app:layout_constraintStart_toEndOf="@id/text_transfer_date"
+        android:layout_marginStart="8dp"
+        tools:text="Fee: Undisclosed" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

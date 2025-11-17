@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home2"
+        android:icon="@drawable/home"
+        android:title="@string/title_home" />
+
+<!--    <item-->
+<!--        android:id="@+id/favourites"-->
+<!--        android:icon="@drawable/ic_dashboard_black_24dp"-->
+<!--        android:title="@string/title_favourites" />-->
+
+    <item
+        android:id="@+id/match"
+        android:icon="@drawable/football_w"
+        android:title="@string/title_match" />
+
+    <item
+        android:id="@+id/player"
+        android:icon="@drawable/player_w"
+        android:title="@string/title_player" />
+
+    <item
+        android:id="@+id/team"
+        android:icon="@drawable/emblem_w"
+        android:title="@string/title_team" />
+    <item
+        android:id="@+id/leagues"
+        android:icon="@drawable/field_w"
+        android:title="@string/title_leagues" />
+
+</menu>

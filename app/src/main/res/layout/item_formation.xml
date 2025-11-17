@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/txtFormation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="4-3-3" />
+
+    <TextView
+        android:id="@+id/txtGamesPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="#AFAFAF"
+        android:textSize="14sp"
+        tools:text="22 games" />
+
+    <TextView
+        android:id="@+id/txtPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/formation_percentage_background"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="65%" />
+
+    <View
+        android:id="@+id/progressBar"
+        android:layout_width="100dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/formation_progress_background"
+        tools:background="@color/primary_green" />
+
+</LinearLayout>

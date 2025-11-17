@@ -1,0 +1,123 @@
+<!-- res/layout/item_match_event.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <!-- Home team event content (left side) -->
+    <LinearLayout
+        android:id="@+id/home_event_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/home_event_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Mohamed Salah" />
+
+        <TextView
+            android:id="@+id/home_event_player_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5555"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone"
+            tools:text="Mac Allister" />
+
+        <ImageView
+            android:id="@+id/home_event_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="6dp"
+            tools:src="@drawable/goal" />
+
+        <TextView
+            android:id="@+id/home_event_player_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="#55FF55"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone"
+            tools:text="Gravenberch" />
+    </LinearLayout>
+
+    <!-- Time in center -->
+    <TextView
+        android:id="@+id/item_event_minute"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#AFAFAF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="75'" />
+
+    <!-- Away team event content (right side) -->
+    <LinearLayout
+        android:id="@+id/away_event_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/away_event_player_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:textColor="#FF5555"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone"
+            tools:text="Hwang" />
+
+        <ImageView
+            android:id="@+id/away_event_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            tools:src="@drawable/goal" />
+
+        <TextView
+            android:id="@+id/away_event_player_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#55FF55"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone"
+            tools:text="Doherty" />
+
+        <TextView
+            android:id="@+id/away_event_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Matheus Cunha" />
+    </LinearLayout>
+</LinearLayout>
+    

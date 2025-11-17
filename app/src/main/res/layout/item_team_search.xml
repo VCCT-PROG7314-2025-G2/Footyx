@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/imgTeamLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Team Logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_team_placeholder" />
+
+        <TextView
+            android:id="@+id/txtTeamName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgTeamLogo"
+            app:layout_constraintTop_toTopOf="@id/imgTeamLogo"
+            tools:text="Paris Saint Germain" />
+
+        <TextView
+            android:id="@+id/txtTeamCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="#AFAFAF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/txtTeamName"
+            app:layout_constraintStart_toStartOf="@id/txtTeamName"
+            app:layout_constraintTop_toBottomOf="@id/txtTeamName"
+            tools:text="France" />
+
+        <TextView
+            android:id="@+id/txtTeamFounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/txtTeamName"
+            app:layout_constraintStart_toStartOf="@id/txtTeamName"
+            app:layout_constraintTop_toBottomOf="@id/txtTeamCountry"
+            tools:text="Founded: 1970" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

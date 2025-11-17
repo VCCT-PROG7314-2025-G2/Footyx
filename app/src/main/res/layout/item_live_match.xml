@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Live Indicator (Optional, can be a simple view or text) -->
+    <View
+        android:id="@+id/live_indicator_dot"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/live_indicator_dot_shape"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_home_team_name_live"
+        app:layout_constraintBottom_toBottomOf="@id/text_home_team_name_live"
+        android:layout_marginEnd="8dp"
+        tools:visibility="visible"/>
+
+    <!-- Home Team -->
+    <ImageView
+        android:id="@+id/image_home_team_logo_live"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@id/live_indicator_dot"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/home_team_logo_desc" />
+
+    <TextView
+        android:id="@+id/text_home_team_name_live"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/image_home_team_logo_live"
+        app:layout_constraintEnd_toStartOf="@+id/layout_score_time"
+        app:layout_constraintTop_toTopOf="@id/image_home_team_logo_live"
+        app:layout_constraintBottom_toBottomOf="@id/image_home_team_logo_live"
+        tools:text="Arsenal FC Long Name" />
+
+    <!-- Score and Match Time (Center) -->
+    <LinearLayout
+        android:id="@+id/layout_score_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/text_match_score_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="2 - 1" />
+
+        <TextView
+            android:id="@+id/text_match_minute_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/live_match_red"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="75'" />
+    </LinearLayout>
+
+    <!-- Away Team -->
+    <TextView
+        android:id="@+id/text_away_team_name_live"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="end"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@+id/layout_score_time"
+        app:layout_constraintEnd_toStartOf="@id/image_away_team_logo_live"
+        app:layout_constraintTop_toTopOf="@id/image_away_team_logo_live"
+        app:layout_constraintBottom_toBottomOf="@id/image_away_team_logo_live"
+        tools:text="Chelsea FC" />
+
+    <ImageView
+        android:id="@+id/image_away_team_logo_live"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/away_team_logo_desc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

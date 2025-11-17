@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/text_game_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2023-01-15" />
+
+    <TextView
+        android:id="@+id/text_home_team_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_marginEnd="8dp"
+        tools:text="Team A" />
+
+    <TextView
+        android:id="@+id/text_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="2 - 1" />
+
+    <TextView
+        android:id="@+id/text_away_team_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        tools:text="Team B" />
+</LinearLayout>

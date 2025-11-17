@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".FavoritesActivity">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Overlay for better readability -->
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#A6000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header with Back Button and Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/top_bar_background"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/favorites_back"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/favorites_title"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Empty space for balance -->
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <!-- Main Content Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/white_FootyX"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Search Bar -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <EditText
+                            android:id="@+id/search_favorites"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@android:color/transparent"
+                            android:drawableStart="@drawable/ic_search"
+                            android:drawablePadding="12dp"
+                            android:hint="@string/favorites_search_hint"
+                            android:inputType="text"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/material_dynamic_neutral30"
+                            android:textSize="14sp" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Favorite Teams Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        android:orientation="vertical">
+
+                        <!-- Teams Section Header -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/favorites_teams_section"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/black_background"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_add_team"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:background="#00FFFFFF"
+                                    android:paddingStart="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:text="@string/favorites_add_team"
+                                    android:textColor="@color/white_FootyX"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Teams Content Card -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#1E1E1E"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- Favorite Team Display -->
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/recycler_view_favorite_teams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="120dp"
+                                    android:visibility="gone"
+                                    android:padding="12dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgFavoriteTeamLogo"
+                                        android:layout_width="64dp"
+                                        android:layout_height="64dp"
+                                        android:contentDescription="Favorite Team Logo"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:src="@drawable/ic_team_placeholder" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoriteTeamName"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:maxLines="2"
+                                        android:ellipsize="end"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintEnd_toStartOf="@id/btnRemoveFavoriteTeam"
+                                        app:layout_constraintStart_toEndOf="@id/imgFavoriteTeamLogo"
+                                        app:layout_constraintTop_toTopOf="@id/imgFavoriteTeamLogo"
+                                        tools:text="Manchester United" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoriteTeamCountry"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textColor="#AFAFAF"
+                                        android:textSize="14sp"
+                                        app:layout_constraintEnd_toEndOf="@id/txtFavoriteTeamName"
+                                        app:layout_constraintStart_toStartOf="@id/txtFavoriteTeamName"
+                                        app:layout_constraintTop_toBottomOf="@id/txtFavoriteTeamName"
+                                        tools:text="England" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoriteLeague"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textColor="@color/primary_green"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintEnd_toEndOf="@id/txtFavoriteTeamName"
+                                        app:layout_constraintStart_toStartOf="@id/txtFavoriteTeamName"
+                                        app:layout_constraintTop_toBottomOf="@id/txtFavoriteTeamCountry"
+                                        tools:text="Premier League" />
+
+                                    <ImageButton
+                                        android:id="@+id/btnRemoveFavoriteTeam"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:contentDescription="Remove favorite team"
+                                        android:src="@drawable/ic_delete"
+                                        app:tint="#FF5252"
+                                        app:layout_constraintBottom_toBottomOf="@id/imgFavoriteTeamLogo"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="@id/imgFavoriteTeamLogo" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <!-- Empty State for Teams -->
+                                <TextView
+                                    android:id="@+id/tv_no_teams"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="120dp"
+                                    android:gravity="center"
+                                    android:text="@string/favorites_no_teams"
+                                    android:textColor="@color/white_FootyX"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <!-- Favorite Players Section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Players Section Header -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/favorites_players_section"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/black_background"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/btn_add_player"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:background="#00FFFFFF"
+                                    android:paddingStart="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:text="@string/favorites_add_player"
+                                    android:textColor="@color/white_FootyX"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Players Content Card -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#1E1E1E"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <!-- Favorite Player Display -->
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/layout_favorite_player"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="120dp"
+                                    android:visibility="gone"
+                                    android:padding="12dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgFavoritePlayerPhoto"
+                                        android:layout_width="64dp"
+                                        android:layout_height="64dp"
+                                        android:contentDescription="Favorite Player Photo"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:src="@drawable/player_w" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoritePlayerName"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:maxLines="2"
+                                        android:ellipsize="end"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintEnd_toStartOf="@id/btnRemoveFavoritePlayer"
+                                        app:layout_constraintStart_toEndOf="@id/imgFavoritePlayerPhoto"
+                                        app:layout_constraintTop_toTopOf="@id/imgFavoritePlayerPhoto"
+                                        tools:text="Kylian Mbappé" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoritePlayerNationality"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textColor="#AFAFAF"
+                                        android:textSize="14sp"
+                                        app:layout_constraintEnd_toEndOf="@id/txtFavoritePlayerName"
+                                        app:layout_constraintStart_toStartOf="@id/txtFavoritePlayerName"
+                                        app:layout_constraintTop_toBottomOf="@id/txtFavoritePlayerName"
+                                        tools:text="France" />
+
+                                    <TextView
+                                        android:id="@+id/txtFavoritePlayerSeason"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textColor="@color/primary_green"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintEnd_toEndOf="@id/txtFavoritePlayerName"
+                                        app:layout_constraintStart_toStartOf="@id/txtFavoritePlayerName"
+                                        app:layout_constraintTop_toBottomOf="@id/txtFavoritePlayerNationality"
+                                        tools:text="Season 2023" />
+
+                                    <ImageButton
+                                        android:id="@+id/btnRemoveFavoritePlayer"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:contentDescription="Remove favorite player"
+                                        android:src="@drawable/ic_delete"
+                                        app:tint="#FF5252"
+                                        app:layout_constraintBottom_toBottomOf="@id/imgFavoritePlayerPhoto"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="@id/imgFavoritePlayerPhoto" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <!-- Empty State for Players -->
+                                <TextView
+                                    android:id="@+id/tv_no_players"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="120dp"
+                                    android:gravity="center"
+                                    android:text="@string/favorites_no_players"
+                                    android:textColor="@color/white_FootyX"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
