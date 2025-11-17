@@ -26,8 +26,8 @@ class HomeViewModel : ViewModel() {
     val isLoadingTransfers: LiveData<Boolean> = _isLoadingTransfers
     
     // LiveData for errors
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
     
     // LiveData for live fixtures
     private val _liveFixtures = MutableLiveData<List<FixtureData>>()

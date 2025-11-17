@@ -73,7 +73,7 @@
                 android:contentDescription="Toggle season selection"
                 android:padding="8dp"
                 android:src="@android:drawable/ic_menu_more"
-                android:tint="@android:color/white" />
+                app:tint="@android:color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

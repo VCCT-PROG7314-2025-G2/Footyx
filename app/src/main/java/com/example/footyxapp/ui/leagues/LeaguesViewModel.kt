@@ -37,8 +37,8 @@ class LeaguesViewModel : ViewModel() {
     val isLoadingStandings: LiveData<Boolean> = _isLoadingStandings
     
     // Live data for errors
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
     
     // Search job for cancellation
     private var searchJob: Job? = null
