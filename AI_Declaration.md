@@ -18,13 +18,12 @@ This prompt requests that ChatGPT solves the errors in the specified code while 
 
 ## Result
 
-<img width="784" height="760" alt="Screenshot 2025-11-17 202100" src="https://github.com/user-attachments/assets/1ef8fc3c-00d1-40f7-9b41-5ae4237aa497" />
-<img width="780" height="760" alt="Screenshot 2025-11-17 202052" src="https://github.com/user-attachments/assets/6efb439a-78ad-4026-9dde-a66bcbb86bec" />
-<img width="780" height="763" alt="Screenshot 2025-11-17 202044" src="https://github.com/user-attachments/assets/15834211-b8c7-4ca1-a5ec-33dff1b3f5cf" />
-<img width="777" height="764" alt="Screenshot 2025-11-17 202038" src="https://github.com/user-attachments/assets/fda9b3ab-1690-4390-b3b9-491846332150" />
-<img width="790" height="751" alt="Screenshot 2025-11-17 202029" src="https://github.com/user-attachments/assets/58e40893-5ebc-4ecc-b09d-c8f89048f334" />
-<img width="818" height="771" alt="Screenshot 2025-11-17 202020" src="https://github.com/user-attachments/assets/cf543597-a8e8-407d-9746-a66383713b09" />
-<img width="1356" height="636" alt="Screenshot 2025-11-09 200824" src="https://github.com/user-attachments/assets/50712556-03af-47bf-b29f-357586852527" />
+<img width="784" height="760" alt="Screenshot 2025-11-17 202100" src="https://github.com/user-attachments/assets/45a4f1ac-a5f8-4173-9f65-3c65c8c7a35b" />
+<img width="780" height="760" alt="Screenshot 2025-11-17 202052" src="https://github.com/user-attachments/assets/8bc7c915-b0aa-439f-a1ec-a4ecb115f686" />
+<img width="780" height="763" alt="Screenshot 2025-11-17 202044" src="https://github.com/user-attachments/assets/4a70e947-e734-461d-9c78-a8c48ab690e1" />
+<img width="777" height="764" alt="Screenshot 2025-11-17 202038" src="https://github.com/user-attachments/assets/c797d8bd-49f2-4e4a-b205-70c2095f86ea" />
+<img width="790" height="751" alt="Screenshot 2025-11-17 202029" src="https://github.com/user-attachments/assets/8f683c91-94f8-43e7-9a9c-f9ba1e72b99a" />
+<img width="818" height="771" alt="Screenshot 2025-11-17 202020" src="https://github.com/user-attachments/assets/88cb4b1c-36fc-4375-bd59-9feaa8eff486" />
 
 
 ## Prompt
@@ -39,8 +38,9 @@ This prompt requests ChatGPT to assertain the cause for the errors provided usin
 
 ## Result
 
-<img width="779" height="653" alt="Screenshot 2025-11-17 202328" src="https://github.com/user-attachments/assets/10206f7a-33c9-48cb-a7aa-e4c4c633d0f4" />
-<img width="796" height="726" alt="Screenshot 2025-11-17 202318" src="https://github.com/user-attachments/assets/372a4752-ef1c-4075-909d-c6a788a94541" />
-<img width="782" height="744" alt="Screenshot 2025-11-17 202308" src="https://github.com/user-attachments/assets/1d68ca17-f7ed-493d-be80-34daa3fa31c7" />
-<img width="781" height="737" alt="Screenshot 2025-11-17 202301" src="https://github.com/user-attachments/assets/8c7c2848-3ec2-4fcc-a222-61f886439676" />
-<img width="792" height="745" alt="Screenshot 2025-11-17 202252" src="https://github.com/user-attachments/assets/3d3b2154-fcb4-4ba3-8841-2a2af6de6ec7" />
+<img width="779" height="653" alt="Screenshot 2025-11-17 202328" src="https://github.com/user-attachments/assets/2ecb3dc7-9738-40e6-be32-e0f9f5161cfe" />
+<img width="796" height="726" alt="Screenshot 2025-11-17 202318" src="https://github.com/user-attachments/assets/8a319351-d7bf-41e3-96e0-5a0fb363a18d" />
+<img width="782" height="744" alt="Screenshot 2025-11-17 202308" src="https://github.com/user-attachments/assets/0b839771-6edd-494a-925b-12c53f6b777a" />
+<img width="781" height="737" alt="Screenshot 2025-11-17 202301" src="https://github.com/user-attachments/assets/5d045aaa-e05e-4043-80d5-0a4231fb8913" />
+<img width="792" height="745" alt="Screenshot 2025-11-17 202252" src="https://github.com/user-attachments/assets/9460d59b-b8ba-465e-a95a-fb02afcad60e" />
+
