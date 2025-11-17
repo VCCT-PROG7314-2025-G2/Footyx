@@ -1,0 +1,71 @@
+# FootyX – Google Play Store Listing
+
+## App Title
+**FootyX – Live Football Stats**
+
+---
+
+## Short Description
+Live scores, fixtures, stats & favourites for players, teams, and leagues.
+
+---
+
+## Full Description
+
+**FootyX** is a modern football companion app built for fans who want fast, accurate, and personalized football information. Stay updated with real-time scores, fixtures, player stats, team performance, and league standings — all in one clean and intuitive app.
+
+Whether you follow one team or multiple leagues, FootyX gives you the tools to track everything happening across the football world.
+
+---
+
+## Features
+
+### **Live Football Data**
+Get real-time match results, upcoming fixtures, detailed match events, standings, and season statistics from API-Football.
+
+### **Powerful Search**
+Search for:
+- Players  
+- Teams  
+- Leagues  
+- Matches  
+
+Fast and accurate football data at your fingertips.
+
+### **Player & Team Statistics**
+Explore detailed stats including:
+- Goals, assists, cards  
+- Team rankings  
+- Match performance  
+- League data  
+- Player career profiles  
+
+### **Favourites**
+Save:
+- Favourite teams  
+- Favourite players  
+
+Quick access stored securely on your device.
+
+### **Secure Firebase Authentication**
+Register and log in using Google’s secure Firebase Authentication.  
+FootyX never stores your password.
+
+---
+
+## Privacy & Security
+FootyX uses Firebase Authentication and secure data handling practices.  
+We do **not** share or sell personal information.
+
+---
+
+## Requirements
+- Android 15+
+- Internet connection required for live data
+
+---
+
+## Why FootyX?
+Fast, clean, accurate, and made for football fans.  
+Live stats, personalised favourites, and a smooth experience.
+
