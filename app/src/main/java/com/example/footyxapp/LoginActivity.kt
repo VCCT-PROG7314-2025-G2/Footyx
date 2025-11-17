@@ -154,6 +154,20 @@ class LoginActivity : AppCompatActivity() {
                             }
                             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                         }
+
+                        // Initialize FCM token for notifications
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            user.uid
+                        )
+
+                        // Start MainActivity after login is successful
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        // Close login activity
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
                     }
             }
         }
@@ -237,6 +251,15 @@ class LoginActivity : AppCompatActivity() {
                         }
                        apply()
                     }
+                    
+                    // Initialize FCM token for notifications
+                    if (user != null) {
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            user.uid
+                        )
+                    }
+                    
                     updateUI(user)
                 }else{
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
