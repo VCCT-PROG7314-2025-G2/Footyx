@@ -115,7 +115,7 @@ A Default API key can be used
 
 1. Download the **FootyX APK** file here:
 
-      [![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android&logoColor=white)](https://github.com/JoseLubota/Footyx/releases/tag/V.0.1.0)
+      [![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android&logoColor=white)](https://github.com/JoseLubota/Footyx/releases/tag/V.1.0)
 
 2. Transfer it to youre Android device via:
    * USB cable transfer
