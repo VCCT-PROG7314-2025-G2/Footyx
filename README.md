@@ -46,14 +46,11 @@ Multi-Language Support
 * English
 * Afrikaans
 
-User Defined Features
-* TODO
-
 ---
 
 ## Youtube Video Link
 
-[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/tCIi9OMZbTI?si=Z-TLOk4fMyji5b2s)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/Y97zmBcXNcQ)
 
 ---
 
@@ -223,6 +220,8 @@ https://onefootball.com/en/home [Accessed August 2025].
 
 * Sofascore, 2025. Sofascore. [Online] Available at: https://www.sofascore.com/
 [Accessed Auguest 2025].
+
+* Firebase, 2025. Firebase Cloud Messaging. [Online] Available at: https://firebase.google.com/docs/cloud-messaging.
 
 ---
 
