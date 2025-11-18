@@ -151,6 +151,12 @@ After favouriting a team and/or player in settings → preferences → favourite
 
 ---
 
+## Playstore Documentation
+
+[![Play Store Documentation](https://img.shields.io/badge/Play%20Store%20Documentation-4285F4?style=for-the-badge&logo=google-play&logoColor=white)](PlayStoreDocs)
+
+---
+
 ## Contributions
 
 [![Contributors](https://contrib.rocks/image?repo=JoseLubota/Footyx)](https://github.com/JoseLubota/Footyx/graphs/contributors)
