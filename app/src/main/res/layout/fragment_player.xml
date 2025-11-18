@@ -314,13 +314,13 @@
                     android:layout_height="wrap_content"
                     android:columnCount="2"
                     android:rowCount="3">
-                    <TextView android:text="Shots Total:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_shots_total_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_shots_total" tools:text="91" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Shots on Target:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_shots_on_target_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_shots_on" tools:text="59" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Dribbles (Success):" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_dribbles_success_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_dribbles" tools:text="61 / 123" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Key Passes:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_key_passes_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_key_passes" tools:text="40" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
                 </GridLayout>
             </LinearLayout>
@@ -352,13 +352,13 @@
                     android:layout_height="wrap_content"
                     android:columnCount="2"
                     android:rowCount="3">
-                    <TextView android:text="Duels Won:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_duels_won_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_duels_won" tools:text="103 / 224" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Tackles:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_tackles_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_tackles" tools:text="4" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Fouls Drawn:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_fouls_drawn_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_fouls_drawn" tools:text="38" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
-                    <TextView android:text="Yellow Cards:" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
+                    <TextView android:text="@string/player_yellow_cards_label" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textColor="#AFAFAF"/>
                     <TextView android:id="@+id/text_yellow_cards" tools:text="4" style="@style/Widget.AppCompat.TextView.SpinnerItem" android:textStyle="bold" android:textColor="@android:color/white" android:gravity="end"/>
                 </GridLayout>
             </LinearLayout>

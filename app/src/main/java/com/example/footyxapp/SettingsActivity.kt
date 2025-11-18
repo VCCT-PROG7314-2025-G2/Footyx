@@ -1,6 +1,6 @@
 package com.example.footyxapp
 
-//import android.content.ContentValues.TAG
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -26,6 +26,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlin.math.sign
 import androidx.core.content.edit
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import com.example.footyxapp.data.classes.SettingsDataStore
 import android.util.Log
 
 class SettingsActivity : AppCompatActivity() {
@@ -39,16 +42,17 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var editButton : Button
     private val firestore = FirebaseFirestore.getInstance()
     private val TAG = "SettingsActivity"
+    private lateinit var settingsDataStore: SettingsDataStore
 
     // Add Shared Preference
     private val prefs by lazy  {
         getSharedPreferences("settings_prefs", MODE_PRIVATE)
     }
-    
+
     private val userPrefs by lazy {
         getSharedPreferences("user_prefs", MODE_PRIVATE)
     }
-    
+
     private fun getUserId(): String? {
         return userPrefs.getString("user_uid", null)
     }
@@ -78,11 +82,13 @@ class SettingsActivity : AppCompatActivity() {
         editButton = findViewById(R.id.edit_user_btn)
 
 
+
         // Initiate Firebase Variables
         auth = Firebase.auth
         credentialManager = CredentialManager.create(this)
 
         // Load saved settings
+        settingsDataStore = SettingsDataStore(this)
         loadSettings()
         setupSwitchListener()
         setupLanguageListener()
@@ -176,25 +182,30 @@ class SettingsActivity : AppCompatActivity() {
         // Load push notifications preference
         val pushNotificationsEnabled = prefs.getBoolean("push_notifications_enabled", false)
         binding.switchPushNotifications.isChecked = pushNotificationsEnabled
-        
+
         binding.switchBiometricAuth.isChecked = prefs.getBoolean("biometric_enabled", false)
 
-        // Language Radio Button
+        // Language Radio Button and apply locale
         val savedLanguage = prefs.getString("language","english")
-        when(savedLanguage){
-            "english" -> binding.radioEnglish.isChecked = true
-            "afrikaans" -> binding.radioAfrikaans.isChecked = true
+        val locales = when (savedLanguage) {
+            "afrikaans", SettingsDataStore.AFRIKAANS, "af" -> LocaleListCompat.create(java.util.Locale("af"))
+            else -> LocaleListCompat.create(java.util.Locale("en"))
         }
-        
+        AppCompatDelegate.setApplicationLocales(locales)
+        when(savedLanguage){
+            "english", SettingsDataStore.ENGLISH, "en" -> binding.radioEnglish.isChecked = true
+            "afrikaans", SettingsDataStore.AFRIKAANS, "af" -> binding.radioAfrikaans.isChecked = true
+        }
+
         // Load notification preferences from Firestore
         loadNotificationPreferencesFromFirestore()
     }
-    
+
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
-    
+
     private fun loadNotificationPreferencesFromFirestore() {
         val userId = getUserId() ?: return
-        
+
         firestore.collection("users")
             .document(userId)
             .get()
@@ -210,14 +221,14 @@ class SettingsActivity : AppCompatActivity() {
                 Log.e(TAG, "Error loading notification preferences from Firestore", e)
             }
     }
-    
+
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
-    
+
     private fun saveNotificationPreferencesToFirestore(enabled: Boolean) {
         val userId = getUserId() ?: return
-        
+
         val preferences = NotificationPreferences(pushNotificationsEnabled = enabled)
-        
+
         firestore.collection("users")
             .document(userId)
             .update("notificationPreferences", preferences.toMap())
@@ -228,9 +239,9 @@ class SettingsActivity : AppCompatActivity() {
                 Log.e(TAG, "Error saving notification preferences to Firestore", e)
             }
     }
-    
+
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
-    
+
     // Edit All settings options
     private fun setupSwitchListener(){
         binding.switchBiometricAuth.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
@@ -239,12 +250,12 @@ class SettingsActivity : AppCompatActivity() {
                 isChecked
             ) }
         }
-        
+
         // Single push notifications toggle
         binding.switchPushNotifications.setOnCheckedChangeListener { _, isChecked ->
             prefs.edit().putBoolean("push_notifications_enabled", isChecked).apply()
             saveNotificationPreferencesToFirestore(isChecked)
-            
+
             val userId = getUserId()
             if (userId != null) {
                 if (isChecked) {
@@ -259,21 +270,22 @@ class SettingsActivity : AppCompatActivity() {
     }
     // Save Selected Language
     private fun setupLanguageListener(){
-        binding.radioEnglish.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+        binding.radioEnglish.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                putString(
-                    "language",
-                    "english"
-                ).apply() }
+                prefs.edit { putString("language","english") }
+                val locales = LocaleListCompat.create(java.util.Locale("en"))
+                AppCompatDelegate.setApplicationLocales(locales)
+                lifecycleScope.launch { settingsDataStore.saveLanguage(SettingsDataStore.ENGLISH) }
+                recreate()
             }
-
         }
-        binding.radioAfrikaans.setOnCheckedChangeListener { _, isChecked -> prefs.edit() {
+        binding.radioAfrikaans.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                putString(
-                    "language",
-                    "afrikaans"
-                ).apply() }
+                prefs.edit { putString("language","afrikaans") }
+                val locales = LocaleListCompat.create(java.util.Locale("af"))
+                AppCompatDelegate.setApplicationLocales(locales)
+                lifecycleScope.launch { settingsDataStore.saveLanguage(SettingsDataStore.AFRIKAANS) }
+                recreate()
             }
 
         }

@@ -73,7 +73,7 @@ class MatchViewModel : ViewModel() {
                     _isLoadingFixtures.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _fixtures.value = emptyList()
                     _isLoadingFixtures.value = false
                 }
@@ -93,7 +93,7 @@ class MatchViewModel : ViewModel() {
                     _isLoadingFixtures.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _fixtures.value = emptyList()
                     _isLoadingFixtures.value = false
                 }
@@ -113,7 +113,7 @@ class MatchViewModel : ViewModel() {
                     _isLoadingFixtures.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _fixtures.value = emptyList()
                     _isLoadingFixtures.value = false
                 }
@@ -142,7 +142,7 @@ class MatchViewModel : ViewModel() {
                     }
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                 }
             )
             
@@ -152,7 +152,7 @@ class MatchViewModel : ViewModel() {
                     _statistics.value = response.response
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _statistics.value = emptyList()
                 }
             )
@@ -164,7 +164,7 @@ class MatchViewModel : ViewModel() {
                     _isLoadingDetails.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _events.value = emptyList()
                     _isLoadingDetails.value = false
                 }
@@ -195,6 +195,16 @@ class MatchViewModel : ViewModel() {
 
     fun clearError() {
         _error.value = null
+    }
+
+    private fun mapError(exception: Throwable): String {
+        val msg = exception.message ?: ""
+        return when {
+            msg.contains("rate limit", true) -> "Too many requests. Please wait and try again."
+            msg.contains("Expected BEGIN_ARRAY", true) -> "Data format error from server. Please try again later."
+            msg.contains("timeout", true) || msg.contains("connection", true) -> "Network error. Check your connection."
+            else -> "Unable to load match data. Please try again."
+        }
     }
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//

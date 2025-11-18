@@ -87,7 +87,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/white_background"
                     android:ems="20"
-                    android:hint="Email"
+                    android:hint="@string/hint_email"
                     android:inputType="text"
                     android:paddingLeft="20dp"
                     android:textAlignment="textStart" />
@@ -101,7 +101,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/white_background"
                     android:ems="10"
-                    android:hint="Password"
+                    android:hint="@string/hint_password"
                     android:inputType="text|textPassword"
                     android:paddingLeft="20dp" />
 
@@ -155,7 +155,7 @@
                 android:id="@+id/login_OR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OR"
+                android:text="@string/or_separator"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"

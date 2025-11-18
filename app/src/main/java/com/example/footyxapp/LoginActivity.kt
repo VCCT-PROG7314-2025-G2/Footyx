@@ -30,6 +30,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.OptIn
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
@@ -44,8 +45,13 @@ import com.example.footyxapp.data.model.UserViewModel
 import com.example.footyxapp.databinding.SettingsActivityBinding
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import androidx.core.os.LocaleListCompat
+import com.example.footyxapp.data.classes.SettingsDataStore
 import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 
 class LoginActivity : AppCompatActivity() {
 
@@ -78,10 +84,19 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        // Apply saved language before inflating views
+        val settingsPrefs = getSharedPreferences("settings_prefs", MODE_PRIVATE)
+        val lang = settingsPrefs.getString("language", "english")
+        val locales =
+            if (lang == "afrikaans") androidx.core.os.LocaleListCompat.create(java.util.Locale("af")) else androidx.core.os.LocaleListCompat.create(
+                java.util.Locale("en")
+            )
+        androidx.appcompat.app.AppCompatDelegate.setApplicationLocales(locales)
+
         // Checks if user is logged in
         val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
-        val uid = sharedPreferences.getString("user_uid",null)
-        if(uid != null){
+        val uid = sharedPreferences.getString("user_uid", null)
+        if (uid != null) {
             startActivity(Intent(this, MainActivity::class.java))
         }
         //Binding Initialization
@@ -91,93 +106,103 @@ class LoginActivity : AppCompatActivity() {
         //---------------------------------------------------------------------------------------------------------------------------------------//
         // Initialize Views
         //---------------------------------------------------------------------------------------------------------------------------------------//
-        inputEmail = findViewById(R.id.login_email)
-        inputPassword = findViewById(R.id.login_password)
+        inputEmail = findViewById<EditText>(R.id.login_email)
+        inputPassword = findViewById<EditText>(R.id.login_password)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
+        // Initiate Firebase Variables
         auth = Firebase.auth
         credentialManager = CredentialManager.create(this)
 
-// Google Sign-In
+        // Apply saved language when App starts
+        applySavedLanguage()
+
+        // Sign In With Google
         binding.loginGoogleSignInBtn.setOnClickListener {
-            startCredentialSignIn()
-        }
-
-        binding.loginRegisterBtn.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
-
-        binding.loginSignInBttn.setOnClickListener {
-            val email = inputEmail.text.toString().trim().lowercase()
-            val password = inputPassword.text.toString().trim()
-
-            if (!validateInput(email, password)) {
-                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            // Google Sign-In
+            binding.loginGoogleSignInBtn.setOnClickListener {
+                startCredentialSignIn()
             }
 
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
+            binding.loginRegisterBtn.setOnClickListener {
+                startActivity(Intent(this, RegisterActivity::class.java))
+            }
 
-                    if (task.isSuccessful) {
-                        val user = auth.currentUser ?: return@addOnCompleteListener
-                        val uid = user.uid
+            binding.loginSignInBttn.setOnClickListener {
+                val email = inputEmail.text.toString().trim().lowercase()
+                val password = inputPassword.text.toString().trim()
 
-                        // Create Firestore user if not exists
-                        val db = FirebaseFirestore.getInstance()
-                        val userRef = db.collection("users").document(uid)
-
-                        userRef.get().addOnSuccessListener { doc ->
-                            if (!doc.exists()) {
-                                val userData = mapOf(
-                                    "uid" to uid,
-                                    "name" to "",
-                                    "email" to email,
-                                    "photoUrl" to "",
-                                    "password" to password,
-                                    "createdAt" to FieldValue.serverTimestamp()
-                                )
-                                userRef.set(userData)
-                            }
-                        }
-
-                        // Save locally
-                        getSharedPreferences("user_prefs", MODE_PRIVATE)
-                            .edit()
-                            .putBoolean("is_logged_in", true)
-                            .putString("user_uid", uid)
-                            .apply()
-
-                        // Initialize FCM token
-                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
-                            this@LoginActivity,
-                            uid
-                        )
-
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-
-                    } else {
-                        val msg = when (val ex = task.exception) {
-                            is com.google.firebase.auth.FirebaseAuthInvalidUserException ->
-                                "Account not found. Please register."
-                            is com.google.firebase.auth.FirebaseAuthInvalidCredentialsException ->
-                                "Incorrect password."
-                            is com.google.firebase.auth.FirebaseAuthException ->
-                                ex.localizedMessage ?: "Login failed"
-                            else -> ex?.localizedMessage ?: "Login failed"
-                        }
-                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-                    }
+                if (!validateInput(email, password)) {
+                    Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
+
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser ?: return@addOnCompleteListener
+                            val uid = user.uid
+
+                            // Create Firestore user if not exists
+                            val db = FirebaseFirestore.getInstance()
+                            val userRef = db.collection("users").document(uid)
+
+                            userRef.get().addOnSuccessListener { doc ->
+                                if (!doc.exists()) {
+                                    val userData = mapOf(
+                                        "uid" to uid,
+                                        "name" to "",
+                                        "email" to email,
+                                        "photoUrl" to "",
+                                        "password" to password,
+                                        "createdAt" to FieldValue.serverTimestamp()
+                                    )
+                                    userRef.set(userData)
+                                }
+                            }
+
+                            // Save locally
+                            getSharedPreferences("user_prefs", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("is_logged_in", true)
+                                .putString("user_uid", uid)
+                                .apply()
+
+                            // Initialize FCM token
+                            com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                                this@LoginActivity,
+                                uid
+                            )
+
+                            startActivity(Intent(this, MainActivity::class.java))
+                            finish()
+
+                        } else {
+                            val msg = when (val ex = task.exception) {
+                                is com.google.firebase.auth.FirebaseAuthInvalidUserException ->
+                                    "Account not found. Please register."
+
+                                is com.google.firebase.auth.FirebaseAuthInvalidCredentialsException ->
+                                    "Incorrect password."
+
+                                is com.google.firebase.auth.FirebaseAuthException ->
+                                    ex.localizedMessage ?: "Login failed"
+
+                                else -> ex?.localizedMessage ?: "Login failed"
+                            }
+                            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+
+            // Biometric login
+            binding.loginBiometric.setOnClickListener {
+                showBiometricPrompt()
+            }
+
+
         }
-
-// Biometric login
-        binding.loginBiometric.setOnClickListener {
-            showBiometricPrompt()
-        }
-
-
     }
     //________________________________________________________ Google Sign in Related____________________________________
     @OptIn(UnstableApi::class)
@@ -253,7 +278,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                        apply()
                     }
-                    
+
                     // Initialize FCM token for notifications
                     if (user != null) {
                         com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
@@ -261,7 +286,7 @@ class LoginActivity : AppCompatActivity() {
                             user.uid
                         )
                     }
-                    
+
                     updateUI(user)
                 }else{
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -366,5 +391,20 @@ class LoginActivity : AppCompatActivity() {
             }
             .addOnFailureListener { Toast.makeText(this, "Biometric Login failed", Toast.LENGTH_SHORT).show() }
     }
-
+//________________________________________________________ Biometric Related END____________________________________
+    //-------------------------------------------------------------------------------------------------------------------------------
+    // Language Preferences
+    //-------------------------------------------------------------------------------------------------------------------------------
+    private fun applySavedLanguage(){
+        val settingsDataStore = SettingsDataStore(this)
+        CoroutineScope(Dispatchers.Main).launch {
+        // Get first emited value from flow
+        val savedLanguageCode = settingsDataStore.getLanguage.first()
+        if(!savedLanguageCode.isNullOrEmpty()){
+            // Apply saved language
+            val locateList = LocaleListCompat.forLanguageTags(savedLanguageCode)
+            AppCompatDelegate.setApplicationLocales(locateList)
+        }
+    }
+    }
 }

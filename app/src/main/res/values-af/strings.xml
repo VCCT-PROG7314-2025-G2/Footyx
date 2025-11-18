@@ -1,38 +1,28 @@
 <resources>
     <string name="app_name">FootyX</string>
-    <string name="title_home">Home</string>
-    <string name="title_leagues">Leagues</string>
-    <string name="title_favourites">Favourites</string>
-    <string name="title_match">Match</string>
-    <string name="title_player">Player</string>
-    <string name="title_team">Team</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_home">Tuis</string>
+    <string name="title_leagues">Ligas</string>
+    <string name="title_favourites">Gunstelinge</string>
+    <string name="title_match">Wedstryd</string>
+    <string name="title_player">Speler</string>
+    <string name="title_team">Span</string>
+    <string name="title_activity_settings">Instellings</string>
 
     <!-- Settings Page Strings -->
-    <string name="settings_notifications">Notifications</string>
-    <string name="settings_match_reminders">Match Reminders</string>
-    <string name="settings_goals_alerts">Goals Alerts</string>
-    <string name="settings_final_score_alerts">Final Score Alerts</string>
-    <string name="settings_preferences">Preferences</string>
-    <string name="settings_favorite_team">Favorite Team</string>
-    <string name="settings_language">Language</string>
-    <string name="settings_english">English</string>
+    <string name="settings_notifications">Kennisgewings</string>
+    <string name="settings_match_reminders">Wedstrydherinneringe</string>
+    <string name="settings_goals_alerts">Doelwaarskuwings</string>
+    <string name="settings_final_score_alerts">Einduitslagwaarskuwings</string>
+    <string name="settings_preferences">Voorkeure</string>
+    <string name="settings_favorite_team">Gunstelingspan</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_english">Engels</string>
     <string name="settings_afrikaans">Afrikaans</string>
-    <string name="settings_security">Security</string>
-    <string name="settings_biometric_auth">Biometric Authentication</string>
-    <string name="settings_biometric_description">Use fingerprint or face unlock</string>
-    <string name="settings_logout">Log Out</string>
-    <string name="settings_back">Back</string>
-    <string name="settings_push_notifications">Push Notifications</string>
-    
-    <!-- Notification Strings -->
-    <string name="default_notification_channel_id">footyx_default_channel</string>
-    <string name="notification_channel_match_reminders">Match Reminders</string>
-    <string name="notification_channel_goal_alerts">Goal Alerts</string>
-    <string name="notification_channel_final_score">Final Score</string>
-    <string name="notification_match_reminder_title">Match Starting Soon</string>
-    <string name="notification_goal_alert_title">Goal!</string>
-    <string name="notification_final_score_title">Match Finished</string>
+    <string name="settings_security">Sekuriteit</string>
+    <string name="settings_biometric_auth">Biometriese Verifikasie</string>
+    <string name="settings_biometric_description">Gebruik vingerafdruk of gesigontsluiting</string>
+    <string name="settings_logout">Teken uit</string>
+    <string name="settings_back">Terug</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -110,12 +100,13 @@
     <string name="player_photo_desc">Player photo</string>
 
     <!-- Login Page Strings -->
-    <string name="login_welcome">Welcome Back !</string>
-    <string name="login_info">Get news and statistics of your favourite teams now</string>
-    <string name="login_register_bttn">New User ? Sign Up Here</string>
-    <string name="login_sign_in_bttn">Sign In</string>
-    <string name="biometric_login_sign_in_bttn">Biometric Login</string>
-    <string name="main_search_hint">Search</string>
+    <string name="login_welcome">Welkom terug!</string>
+    <string name="login_info">Kry nuus en statistieke van jou gunsteling spanne</string>
+    <string name="login_register_bttn">Nuwe gebruiker? Skryf hier in</string>
+    <string name="login_sign_in_bttn">Meld aan</string>
+
+    <string name="biometric_login_sign_in_bttn">Biometriese aanmelding</string>
+    <string name="main_search_hint">Soek</string>
 
     <!-- Register Page Strings -->
     <string name="register_welcome">Welcome !</string>
@@ -151,81 +142,81 @@
     <string name="team_logo_desc">Team logo</string> <!-- For item_selectable_team -->
 
     <!-- Edit Page Strings -->
-    <string name="edit_welcome">Update User Details</string>
-    <string name="edit_info">Get news and statistics of your favourite teams now</string>
-    <string name="edit_submit_bttn">Submit</string>
+    <string name="edit_welcome">Werk gebruikersbesonderhede by</string>
+    <string name="edit_info">Kry nuus en statistieke van jou gunsteling spanne</string>
+    <string name="edit_submit_bttn">Dien in</string>
 
     <!-- Common hints/actions -->
-    <string name="hint_username">Username</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_username">Gebruikersnaam</string>
+    <string name="hint_email">E-pos</string>
+    <string name="hint_password">Wagwoord</string>
+    <string name="hint_confirm_password">Bevestig wagwoord</string>
 
     <!-- Leagues fragment -->
-    <string name="leagues_select_season">Select Season</string>
-    <string name="leagues_column_team">Team</string>
-    <string name="leagues_column_played">P</string>
+    <string name="leagues_select_season">Kies seisoen</string>
+    <string name="leagues_column_team">Span</string>
+    <string name="leagues_column_played">Gesp.</string>
     <string name="leagues_column_goal_difference">GD</string>
-    <string name="leagues_column_points">Pts</string>
+    <string name="leagues_column_points">Punte</string>
 
     <!-- Player fragment -->
-    <string name="player_season_hint">Season (2021-2023)</string>
-    <string name="player_select_team_league">Select Team/League:</string>
-    <string name="player_attacking_section">Attacking</string>
-    <string name="player_defense_discipline_section">Defense &amp; Discipline</string>
-    <string name="player_nationality_label">Nationality:</string>
-    <string name="player_age_label">Age:</string>
-    <string name="player_height_label">Height:</string>
-    <string name="player_weight_label">Weight:</string>
+    <string name="player_season_hint">Seisoen (2021–2023)</string>
+    <string name="player_select_team_league">Kies span/liga:</string>
+    <string name="player_attacking_section">Aanval</string>
+    <string name="player_defense_discipline_section">Verdediging &amp; Dissipline</string>
+    <string name="player_nationality_label">Nasionaliteit:</string>
+    <string name="player_age_label">Ouderdom:</string>
+    <string name="player_height_label">Lengte:</string>
+    <string name="player_weight_label">Gewig:</string>
 
     <!-- Search dialogs -->
-    <string name="search_team_title">Search for a Team</string>
-    <string name="search_player_title">Search for a Player</string>
-    <string name="content_desc_close_dialog">Close dialog</string>
-    <string name="season_range_note">(2021-2023 only)</string>
-    <string name="select_league_prompt">Select which league to follow:</string>
-    <string name="search_player_hint">Search for a player...</string>
-    <string name="no_players_found">No players found</string>
+    <string name="search_team_title">Soek vir ’n span</string>
+    <string name="search_player_title">Soek vir ’n speler</string>
+    <string name="content_desc_close_dialog">Maak dialoog toe</string>
+    <string name="season_range_note">(slegs 2021–2023)</string>
+    <string name="select_league_prompt">Kies watter liga om te volg:</string>
+    <string name="search_player_hint">Soek vir ’n speler...</string>
+    <string name="no_players_found">Geen spelers gevind nie</string>
 
     <!-- Favorites a11y -->
-    <string name="favorite_team_logo_desc">Favorite Team Logo</string>
-    <string name="remove_favorite_team_desc">Remove favorite team</string>
+    <string name="favorite_team_logo_desc">Gunsteling spanlogo</string>
+    <string name="remove_favorite_team_desc">Verwyder gunsteling span</string>
 
     <!-- Player header metrics -->
-    <string name="player_apps_value">Apps\n%1$d</string>
-    <string name="player_goals_value">Goals\n%1$d</string>
-    <string name="player_assists_value">Assists\n%1$d</string>
-    <string name="player_rating_value">Rating\n%1$s</string>
+    <string name="player_apps_value">Verskynings\n%1$d</string>
+    <string name="player_goals_value">Doele\n%1$d</string>
+    <string name="player_assists_value">Assisterings\n%1$d</string>
+    <string name="player_rating_value">Gradering\n%1$s</string>
 
     <!-- Player stat labels -->
-    <string name="player_shots_total_label">Shots Total:</string>
-    <string name="player_shots_on_target_label">Shots on Target:</string>
-    <string name="player_dribbles_success_label">Dribbles (Success):</string>
-    <string name="player_key_passes_label">Key Passes:</string>
-    <string name="player_duels_won_label">Duels Won:</string>
-    <string name="player_tackles_label">Tackles:</string>
-    <string name="player_fouls_drawn_label">Fouls Drawn:</string>
-    <string name="player_yellow_cards_label">Yellow Cards:</string>
+    <string name="player_shots_total_label">Totale skote:</string>
+    <string name="player_shots_on_target_label">Skote op doel:</string>
+    <string name="player_dribbles_success_label">Dribbels (sukses):</string>
+    <string name="player_key_passes_label">Sleutelpasse:</string>
+    <string name="player_duels_won_label">Gewonne duelle:</string>
+    <string name="player_tackles_label">Ingrypings:</string>
+    <string name="player_fouls_drawn_label">Oortredings afgedwing:</string>
+    <string name="player_yellow_cards_label">Geel kaarte:</string>
 
     <!-- Player programmatic strings -->
-    <string name="player_position_unknown">Unknown</string>
-    <string name="player_rating_na">N/A</string>
-    <string name="player_season_invalid_error">Valid seasons: 2021-2023</string>
+    <string name="player_position_unknown">Onbekend</string>
+    <string name="player_rating_na">NVT</string>
+    <string name="player_season_invalid_error">Geldige seisoene: 2021–2023</string>
 
     <!-- Dialog titles -->
-    <string name="select_league_title">Select League</string>
-    <string name="label_season">Season:</string>
+    <string name="select_league_title">Kies liga</string>
+    <string name="label_season">Seisoen:</string>
 
     <!-- Favorites programmatic -->
-    <string name="favorites_set_favorite_player">%1$s set as your favorite player!</string>
-    <string name="favorites_remove_player_title">Remove Favorite Player</string>
-    <string name="favorites_remove_player_confirm">Are you sure you want to remove %1$s?</string>
-    <string name="action_remove">Remove</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="favorites_player_removed">Favorite player removed</string>
-    <string name="favorites_set_favorite_team">%1$s set as your favorite team!</string>
-    <string name="favorites_remove_team_title">Remove Favorite Team</string>
-    <string name="favorites_remove_team_confirm">Are you sure you want to remove %1$s?</string>
-    <string name="favorites_team_removed">Favorite team removed</string>
+    <string name="favorites_set_favorite_player">%1$s is as jou gunsteling speler gestel!</string>
+    <string name="favorites_remove_player_title">Verwyder gunsteling speler</string>
+    <string name="favorites_remove_player_confirm">Is jy seker jy wil %1$s verwyder?</string>
+    <string name="action_remove">Verwyder</string>
+    <string name="action_cancel">Kanselleer</string>
+    <string name="favorites_player_removed">Gunsteling speler verwyder</string>
+    <string name="favorites_set_favorite_team">%1$s is as jou gunsteling span gestel!</string>
+    <string name="favorites_remove_team_title">Verwyder gunsteling span</string>
+    <string name="favorites_remove_team_confirm">Is jy seker jy wil %1$s verwyder?</string>
+    <string name="favorites_team_removed">Gunsteling span verwyder</string>
 
 </resources>

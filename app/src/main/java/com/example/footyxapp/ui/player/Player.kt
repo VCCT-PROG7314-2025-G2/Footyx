@@ -121,7 +121,7 @@ class Player : Fragment(), SearchableFragment {
                 
                 // Show error if season is not in valid range
                 if (seasonText.isNotEmpty() && (season == null || season !in 2021..2023)) {
-                    binding.editSeason.error = "Valid seasons: 2021-2023"
+                    binding.editSeason.error = getString(R.string.player_season_invalid_error)
                 } else {
                     binding.editSeason.error = null
                 }
@@ -314,7 +314,7 @@ class Player : Fragment(), SearchableFragment {
                 .into(binding.teamLogo)
 
             // Position
-            binding.textPlayerPosition.text = statistics.games.position ?: "Unknown"
+            binding.textPlayerPosition.text = statistics.games.position ?: getString(R.string.player_position_unknown)
 
             // Main statistics
             val appearances = statistics.games.appearances ?: 0
@@ -322,12 +322,12 @@ class Player : Fragment(), SearchableFragment {
             val assists = statistics.goals.assists ?: 0
             val rating = statistics.games.rating?.let { 
                 "%.2f".format(it.toDoubleOrNull() ?: 0.0) 
-            } ?: "N/A"
+            } ?: getString(R.string.player_rating_na)
 
-            binding.textAppearances.text = "Apps\n$appearances"
-            binding.textGoals.text = "Goals\n$goals"
-            binding.textAssists.text = "Assists\n$assists"
-            binding.textRating.text = "Rating\n$rating"
+            binding.textAppearances.text = getString(R.string.player_apps_value, appearances)
+            binding.textGoals.text = getString(R.string.player_goals_value, goals)
+            binding.textAssists.text = getString(R.string.player_assists_value, assists)
+            binding.textRating.text = getString(R.string.player_rating_value, rating)
 
             // Attacking stats
             binding.textShotsTotal.text = "${statistics.shots.total ?: 0}"

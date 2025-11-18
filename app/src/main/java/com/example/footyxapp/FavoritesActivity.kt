@@ -156,7 +156,7 @@ class FavoritesActivity : AppCompatActivity() {
         
         Toast.makeText(
             this,
-            "${playerData.player.name} set as your favorite player!",
+            getString(R.string.favorites_set_favorite_player, playerData.player.name),
             Toast.LENGTH_SHORT
         ).show()
         
@@ -169,12 +169,12 @@ class FavoritesActivity : AppCompatActivity() {
         val favorite = favoritesManager.getFavoritePlayer() ?: return
         
         AlertDialog.Builder(this)
-            .setTitle("Remove Favorite Player")
-            .setMessage("Are you sure you want to remove ${favorite.playerData.player.name}?")
-            .setPositiveButton("Remove") { _, _ ->
+            .setTitle(R.string.favorites_remove_player_title)
+            .setMessage(getString(R.string.favorites_remove_player_confirm, favorite.playerData.player.name))
+            .setPositiveButton(R.string.action_remove) { _, _ ->
                 removeFavoritePlayer()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.action_cancel, null)
             .show()
     }
 
@@ -184,7 +184,7 @@ class FavoritesActivity : AppCompatActivity() {
         favoritesManager.clearFavoritePlayer()
         Toast.makeText(
             this,
-            "Favorite player removed",
+            getString(R.string.favorites_player_removed),
             Toast.LENGTH_SHORT
         ).show()
         loadFavoritePlayer()
@@ -215,7 +215,7 @@ class FavoritesActivity : AppCompatActivity() {
         
         Toast.makeText(
             this,
-            "${teamData.team.name} set as your favorite team!",
+            getString(R.string.favorites_set_favorite_team, teamData.team.name),
             Toast.LENGTH_SHORT
         ).show()
         
@@ -263,12 +263,12 @@ class FavoritesActivity : AppCompatActivity() {
         val favorite = favoritesManager.getFavoriteTeam() ?: return
         
         AlertDialog.Builder(this)
-            .setTitle("Remove Favorite Team")
-            .setMessage("Are you sure you want to remove ${favorite.teamData.team.name}?")
-            .setPositiveButton("Remove") { _, _ ->
+            .setTitle(R.string.favorites_remove_team_title)
+            .setMessage(getString(R.string.favorites_remove_team_confirm, favorite.teamData.team.name))
+            .setPositiveButton(R.string.action_remove) { _, _ ->
                 removeFavoriteTeam()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(R.string.action_cancel, null)
             .show()
     }
 
@@ -287,7 +287,7 @@ class FavoritesActivity : AppCompatActivity() {
         
         Toast.makeText(
             this,
-            "Favorite team removed",
+            getString(R.string.favorites_team_removed),
             Toast.LENGTH_SHORT
         ).show()
         loadFavoriteTeam()

@@ -207,7 +207,7 @@ class TeamSearchDialogFragment : DialogFragment() {
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     private fun showTeamSearch() {
-        binding.txtDialogTitle.text = "Search for a Team"
+        binding.txtDialogTitle.text = getString(R.string.search_team_title)
         binding.layoutTeamSearch.visibility = View.VISIBLE
         binding.layoutLeagueSelection.visibility = View.GONE
     }
@@ -215,7 +215,7 @@ class TeamSearchDialogFragment : DialogFragment() {
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     private fun showLeagueSelection() {
-        binding.txtDialogTitle.text = "Select League"
+        binding.txtDialogTitle.text = getString(R.string.select_league_title)
         binding.layoutTeamSearch.visibility = View.GONE
         binding.layoutLeagueSelection.visibility = View.VISIBLE
     }
@@ -251,6 +251,7 @@ class TeamSearchDialogFragment : DialogFragment() {
         viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
                 Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                viewModel.clearError()
             }
         }
     }

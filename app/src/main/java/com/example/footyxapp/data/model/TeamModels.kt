@@ -9,7 +9,7 @@ data class TeamSearchResponse(
     @SerializedName("parameters")
     val parameters: TeamSearchParameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")
@@ -71,7 +71,7 @@ data class TeamLeaguesResponse(
     @SerializedName("parameters")
     val parameters: TeamLeaguesParameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")
@@ -168,7 +168,7 @@ data class TeamStatisticsResponse(
     @SerializedName("parameters")
     val parameters: TeamStatisticsParameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")

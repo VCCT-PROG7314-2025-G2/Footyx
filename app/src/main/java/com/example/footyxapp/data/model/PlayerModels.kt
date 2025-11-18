@@ -8,7 +8,7 @@ data class PlayerResponse(
     @SerializedName("parameters")
     val parameters: Parameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")

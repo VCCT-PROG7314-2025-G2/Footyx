@@ -68,7 +68,7 @@ class TeamViewModel : ViewModel() {
                     _isSearching.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _searchResults.value = emptyList()
                     _isSearching.value = false
                 }
@@ -88,7 +88,7 @@ class TeamViewModel : ViewModel() {
                     _isLoadingLeagues.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _isLoadingLeagues.value = false
                 }
             )
@@ -107,7 +107,7 @@ class TeamViewModel : ViewModel() {
                     _isLoadingStatistics.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _isLoadingStatistics.value = false
                 }
             )
@@ -125,7 +125,17 @@ class TeamViewModel : ViewModel() {
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     fun clearError() {
-        _error.value = "error"
+        _error.value = null
+    }
+
+    private fun mapError(exception: Throwable): String {
+        val msg = exception.message ?: ""
+        return when {
+            msg.contains("rate limit", true) -> "Too many requests. Please wait and try again."
+            msg.contains("Expected BEGIN_ARRAY", true) -> "Data format error from server. Please try again later."
+            msg.contains("timeout", true) || msg.contains("connection", true) -> "Network error. Check your connection."
+            else -> "Something went wrong. Please try again."
+        }
     }
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//

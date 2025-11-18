@@ -9,7 +9,7 @@ data class FixtureResponse(
     @SerializedName("parameters")
     val parameters: Map<String, Any>,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")
@@ -144,7 +144,7 @@ data class FixtureStatisticsResponse(
     @SerializedName("parameters")
     val parameters: Map<String, Any>,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")
@@ -183,7 +183,7 @@ data class FixtureEventsResponse(
     @SerializedName("parameters")
     val parameters: Map<String, Any>,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")

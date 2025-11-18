@@ -194,7 +194,7 @@
                                         android:id="@+id/imgFavoriteTeamLogo"
                                         android:layout_width="64dp"
                                         android:layout_height="64dp"
-                                        android:contentDescription="Favorite Team Logo"
+                                        android:contentDescription="@string/favorite_team_logo_desc"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
                                         tools:src="@drawable/ic_team_placeholder" />
@@ -249,7 +249,7 @@
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:background="?attr/selectableItemBackgroundBorderless"
-                                        android:contentDescription="Remove favorite team"
+                                        android:contentDescription="@string/remove_favorite_team_desc"
                                         android:src="@drawable/ic_delete"
                                         app:tint="#FF5252"
                                         app:layout_constraintBottom_toBottomOf="@id/imgFavoriteTeamLogo"

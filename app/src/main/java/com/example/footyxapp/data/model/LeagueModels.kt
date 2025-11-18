@@ -9,7 +9,7 @@ data class LeagueSearchResponse(
     @SerializedName("parameters")
     val parameters: LeagueSearchParameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")
@@ -50,7 +50,7 @@ data class StandingsResponse(
     @SerializedName("parameters")
     val parameters: StandingsParameters,
     @SerializedName("errors")
-    val errors: List<Any>,
+    val errors: Any?,
     @SerializedName("results")
     val results: Int,
     @SerializedName("paging")

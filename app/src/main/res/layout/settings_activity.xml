@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Settings"
+                    android:text="@string/title_activity_settings"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -147,7 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Match Reminders"
+                    android:text="@string/settings_match_reminders"
                     android:textColor="@color/black_FootyX"
                     android:textSize="16sp" />
 
@@ -177,7 +177,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Goals Alerts"
+                    android:text="@string/settings_goals_alerts"
                     android:textColor="@color/black_FootyX"
                     android:textSize="16sp" />
 
@@ -206,7 +206,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Final Score Alerts"
+                    android:text="@string/settings_final_score_alerts"
                     android:textColor="@color/black_FootyX"
                     android:textSize="16sp" />
 
@@ -231,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Preferences"
+                android:text="@string/settings_preferences"
                 android:textColor="@color/black_FootyX"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -265,7 +265,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Favorites"
+                        android:text="@string/favorites_title"
                         android:textColor="@color/black_FootyX"
                         android:textSize="16sp" />
 
@@ -295,7 +295,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
-                android:text="Language"
+                android:text="@string/settings_language"
                 android:textColor="@color/black_FootyX"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -314,7 +314,7 @@
                     android:buttonTint="@color/black_FootyX"
                     android:checked="true"
                     android:padding="8dp"
-                    android:text="English"
+                    android:text="@string/settings_english"
                     android:textColor="@color/black_FootyX"
                     android:textSize="16sp" />
 
@@ -324,7 +324,7 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black_FootyX"
                     android:padding="8dp"
-                    android:text="Afrikaans"
+                    android:text="@string/settings_afrikaans"
                     android:textColor="@color/black_FootyX"
                     android:textSize="16sp" />
 

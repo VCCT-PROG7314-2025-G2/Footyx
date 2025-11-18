@@ -49,7 +49,7 @@ class HomeViewModel : ViewModel() {
                     _isLoadingLiveFixtures.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _liveFixtures.value = emptyList()
                     _isLoadingLiveFixtures.value = false
                 }
@@ -80,7 +80,7 @@ class HomeViewModel : ViewModel() {
                     _isLoadingTransfers.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _transfers.value = emptyList()
                     _isLoadingTransfers.value = false
                 }
@@ -113,7 +113,7 @@ class HomeViewModel : ViewModel() {
                     _isLoadingTransfers.value = false
                 },
                 onFailure = { exception ->
-                    _error.value = exception.message
+                    _error.value = mapError(exception)
                     _transfers.value = emptyList()
                     _isLoadingTransfers.value = false
                 }
@@ -125,6 +125,16 @@ class HomeViewModel : ViewModel() {
 
     fun clearError() {
         _error.value = null
+    }
+
+    private fun mapError(exception: Throwable): String {
+        val msg = exception.message ?: ""
+        return when {
+            msg.contains("rate limit", true) -> "Too many requests. Please wait and try again."
+            msg.contains("Expected BEGIN_ARRAY", true) -> "Data format error from server. Please try again later."
+            msg.contains("timeout", true) || msg.contains("connection", true) -> "Network error. Check your connection."
+            else -> "Unable to load data. Please try again."
+        }
     }
 
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//

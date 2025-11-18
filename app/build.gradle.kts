@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.androidx.preference)
     implementation(libs.androidx.activity)
     implementation("androidx.work:work-runtime-ktx:2.11.0")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
 
     implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.firestore)

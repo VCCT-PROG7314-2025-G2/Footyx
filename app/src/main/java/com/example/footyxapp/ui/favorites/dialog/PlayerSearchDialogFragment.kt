@@ -104,7 +104,7 @@ class PlayerSearchDialogFragment : DialogFragment() {
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     private fun setupDialog() {
-        binding.txtDialogTitle.text = "Search for a Player"
+        binding.txtDialogTitle.text = getString(R.string.search_player_title)
     }
 
     private fun setupRecyclerView() {
