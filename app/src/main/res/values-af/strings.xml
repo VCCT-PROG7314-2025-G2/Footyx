@@ -19,85 +19,86 @@
     <string name="settings_english">Engels</string>
     <string name="settings_afrikaans">Afrikaans</string>
     <string name="settings_security">Sekuriteit</string>
-    <string name="settings_biometric_auth">Biometriese Verifikasie</string>
+    <string name="settings_biometric_auth">Biometriese verifikasie</string>
     <string name="settings_biometric_description">Gebruik vingerafdruk of gesigontsluiting</string>
     <string name="settings_logout">Teken uit</string>
     <string name="settings_back">Terug</string>
+    <string name="settings_push_notifications">Stootkennisgewings</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="messages_header">Boodskappe</string>
+    <string name="sync_header">Sinkronisering</string>
 
     <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="signature_title">Jou handtekening</string>
+    <string name="reply_title">Verstek antwoordaksie</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    <string name="sync_title">Sinkroniseer e-pos periodiek</string>
+    <string name="attachment_title">Laai inkomende aanhangsels af</string>
+    <string name="attachment_summary_on">Laai outomaties aanhangsels af vir inkomende e-posse
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="attachment_summary_off">Laai slegs aanhangsels af wanneer dit handmatig aangevra word</string>
 
     <!-- Match stats -->
-    <string name="match_statistics_title">Match Statistics</string>
-    <string name="stat_shots_on_goal">Shots on Goal</string>
-    <string name="stat_shots_off_goal">Shots off Goal</string>
-    <string name="stat_total_shots">Total Shots</string>
-    <string name="stat_blocked_shots">Blocked Shots</string>
-    <string name="stat_shots_insidebox">Shots insidebox</string>
-    <string name="stat_shots_outsidebox">Shots outsidebox</string>
-    <string name="stat_fouls">Fouls</string> <!-- Assuming "Fouls" from image, was "Fouls Committed" -->
-    <string name="stat_corner_kicks">Corner Kicks</string>
-    <string name="stat_offsides">Offsides</string>
-    <string name="stat_ball_possession">Ball Possession</string> <!-- Was "Possession" -->
-    <string name="stat_yellow_cards">Yellow Cards</string> <!-- Already exists, ensure it's the same -->
-    <string name="stat_red_cards">Red Cards</string> <!-- Already exists, ensure it's the same -->
-    <string name="stat_goalkeeper_saves">Goalkeeper Saves</string>
-    <string name="stat_total_passes">Total passes</string> <!-- Was "Passes" -->
-    <string name="stat_passes_accurate">Passes accurate</string>
+    <string name="match_statistics_title">Wedstrydstatistieke</string>
+    <string name="stat_shots_on_goal">Skote op doel</string>
+    <string name="stat_shots_off_goal">Skote buite doel</string>
+    <string name="stat_total_shots">Totale skote</string>
+    <string name="stat_blocked_shots">Geblokte skote</string>
+    <string name="stat_shots_insidebox">Skote binne boks</string>
+    <string name="stat_shots_outsidebox">Skote buite boks</string>
+    <string name="stat_fouls">Oortredings</string>
+    <string name="stat_corner_kicks">Hoekskoppe</string>
+    <string name="stat_offsides">Buitenspel</string>
+    <string name="stat_ball_possession">Balbesit</string>
+    <string name="stat_yellow_cards">Geel kaarte</string>
+    <string name="stat_red_cards">Rooi kaarte</string>
+    <string name="stat_goalkeeper_saves">Doelwagterreddings</string>
+    <string name="stat_total_passes">Totale passes</string>
+    <string name="stat_passes_accurate">Akkurate passes</string>
     <string name="stat_passes_percentage">Passes %</string>
 
     <!-- Match Details -->
-    <string name="previous_games_title">Previous Games</string>
-    <string name="no_previous_games">No previous encounters found.</string>
+    <string name="previous_games_title">Vorige wedstryde</string>
+    <string name="no_previous_games">Geen vorige ontmoetings gevind nie.</string>
 
     <!-- Match Winning Odds -->
-    <string name="winning_odds_title">Winning Odds</string>
-    <string name="odd_win_for_home">Home Win</string>
-    <string name="odd_draw">Draw</string>
-    <string name="odd_win_for_away">Away Win</string>
-    <string name="odds_disclaimer_placeholder">Odds are for informational purposes only. Source: ExampleBookie</string>
+    <string name="winning_odds_title">Wenkanse</string>
+    <string name="odd_win_for_home">Tuiswen</string>
+    <string name="odd_draw">Gelykop</string>
+    <string name="odd_win_for_away">Uitspan wen</string>
+    <string name="odds_disclaimer_placeholder">Kanse is slegs vir inligtingsdoeleindes. Bron: ExampleBookie</string>
 
     <!-- Redirect to TEAM from Match -->
-    <string name="view_team_title">View Team</string>
-    <string name="home_team_logo_desc">Home team logo</string>
-    <string name="away_team_logo_desc">Away team logo</string>
+    <string name="view_team_title">Sien span</string>
+    <string name="home_team_logo_desc">Tuispanlogo</string>
+    <string name="away_team_logo_desc">Uitspanlogo</string>
 
     <!-- match events -->
-    <string name="events_title">Events</string>
-    <string name="stadium_name_label">Stadium:</string>
-    <string name="referee_label">Referee:</string>
-    <string name="event_period_first_half_placeholder">FIRST HALF</string>
-    <string name="event_period_second_half_placeholder">SECOND HALF</string>
-    <string name="event_period_extra_time_placeholder">EXTRA TIME</string>
+    <string name="events_title">Gebeurtenisse</string>
+    <string name="stadium_name_label">Stadion:</string>
+    <string name="referee_label">Skeidsregter:</string>
+    <string name="event_period_first_half_placeholder">EERSTE HELFTE</string>
+    <string name="event_period_second_half_placeholder">TWEEDE HELFTE</string>
+    <string name="event_period_extra_time_placeholder">VERLENGDE TYD</string>
     <!-- Add more periods if needed like "PENALTIES" -->
-    <string name="no_events_placeholder">No match events to display yet.</string>
+    <string name="no_events_placeholder">Geen wedstrydgebeurtenisse om nog te vertoon nie.</string>
 
     <!-- fragment_home UI upcoming fixtures -->
-    <string name="home_upcoming_fixtures_title">Upcoming Fixtures</string>
-    <string name="home_no_upcoming_fixtures">No upcoming fixtures to display.</string>
+    <string name="home_upcoming_fixtures_title">Opkomende wedstryde</string>
+    <string name="home_no_upcoming_fixtures">Geen opkomende wedstryde om te wys nie.</string>
 
     <!-- fragment_home UI live -->
-    <string name="home_live_matches_title">Live Matches</string>
-    <string name="home_no_live_matches">No matches are currently live.</string>
+    <string name="home_live_matches_title">Lewendige wedstryde</string>
+    <string name="home_no_live_matches">Geen wedstryde is tans lewendig nie.</string>
 
     <!-- fragment_home UI transfers-->
-    <string name="home_new_transfers_title">New Transfers</string>
-    <string name="home_no_new_transfers">No recent transfers to display.</string>
-    <string name="transfer_from_team_logo_desc">Transfer from team logo</string>
-    <string name="transfer_to_team_logo_desc">Transfer to team logo</string>
-    <string name="player_photo_desc">Player photo</string>
+    <string name="home_new_transfers_title">Nuwe oordragte</string>
+    <string name="home_no_new_transfers">Geen onlangse oordragte om te wys nie.</string>
+    <string name="transfer_from_team_logo_desc">Spanlogo (van)</string>
+    <string name="transfer_to_team_logo_desc">Spanlogo (na)</string>
+    <string name="player_photo_desc">Spelerfoto</string>
 
     <!-- Login Page Strings -->
     <string name="login_welcome">Welkom terug!</string>
@@ -109,37 +110,37 @@
     <string name="main_search_hint">Soek</string>
 
     <!-- Register Page Strings -->
-    <string name="register_welcome">Welcome !</string>
-    <string name="register_info">Get news and statistics of your favourite teams now</string>
-    <string name="register_sign_up_bttn">Sign Up</string>
+    <string name="register_welcome">Welkom!</string>
+    <string name="register_info">Kry nuus en statistieke van jou gunsteling spanne</string>
+    <string name="register_sign_up_bttn">Skryf in</string>
 
     <!-- Splash Screen Strings -->
-    <string name="splash_get_started">Get Started</string>
-    <string name="splash_welcome">Welcome to FootyX</string>
-    <string name="splash_tagline">Your ultimate football companion</string>
+    <string name="splash_get_started">Begin</string>
+    <string name="splash_welcome">Welkom by FootyX</string>
+    <string name="splash_tagline">Jou uiteindelike sokkervennoot</string>
 
     <!-- Favorites Page Strings -->
-    <string name="favorites_title">Favorites</string>
-    <string name="favorites_teams_section">Favorite Teams</string>
-    <string name="favorites_players_section">Favorite Players</string>
-    <string name="favorites_add_team">Add Team</string>
-    <string name="favorites_add_player">Add Player</string>
-    <string name="favorites_no_teams">No favorite teams added yet</string>
-    <string name="favorites_no_players">No favorite players added yet</string>
-    <string name="favorites_search_hint">Search teams or players...</string>
-    <string name="favorites_back">Back</string>
+    <string name="favorites_title">Gunstelinge</string>
+    <string name="favorites_teams_section">Gunsteling spanne</string>
+    <string name="favorites_players_section">Gunsteling spelers</string>
+    <string name="favorites_add_team">Voeg span by</string>
+    <string name="favorites_add_player">Voeg speler by</string>
+    <string name="favorites_no_teams">Geen gunsteling spanne bygevoeg nie</string>
+    <string name="favorites_no_players">Geen gunsteling spelers bygevoeg nie</string>
+    <string name="favorites_search_hint">Soek spanne of spelers...</string>
+    <string name="favorites_back">Terug</string>
 
     <!-- recommend page after log-in-->
-    <string name="background_image_desc">Background image</string>
-    <string name="app_logo_desc">Application logo</string>
-    <string name="recommend_title_favourite_team">Favourite Team</string>
-    <string name="recommend_subtitle_info">Get started by finding and selecting your favourite teams</string>
-    <string name="recommend_search_hint">Search for a team</string>
-    <string name="recommend_no_teams_found">No teams found. Try a different search.</string>
-    <string name="recommend_button_done">Done</string>
-    <string name="recommend_button_skip">Skip</string>
-    <string name="or_separator">OR</string> <!-- If you use it -->
-    <string name="team_logo_desc">Team logo</string> <!-- For item_selectable_team -->
+    <string name="background_image_desc">Agtergrondbeeld</string>
+    <string name="app_logo_desc">Programlogo</string>
+    <string name="recommend_title_favourite_team">Gunsteling span</string>
+    <string name="recommend_subtitle_info">Begin deur jou gunsteling spanne te vind en te kies</string>
+    <string name="recommend_search_hint">Soek vir ’n span</string>
+    <string name="recommend_no_teams_found">Geen spanne gevind nie. Probeer ’n ander soektog.</string>
+    <string name="recommend_button_done">Klaar</string>
+    <string name="recommend_button_skip">Slaan oor</string>
+    <string name="or_separator">OF</string> <!-- If you use it -->
+    <string name="team_logo_desc">Spanlogo</string> <!-- For item_selectable_team -->
 
     <!-- Edit Page Strings -->
     <string name="edit_welcome">Werk gebruikersbesonderhede by</string>
@@ -158,6 +159,8 @@
     <string name="leagues_column_played">Gesp.</string>
     <string name="leagues_column_goal_difference">GD</string>
     <string name="leagues_column_points">Punte</string>
+    <string name="leagues_no_available_seasons">Geen beskikbare seisoene (2021–2023) vir hierdie liga nie</string>
+    <string name="leagues_seasons_label">Seisoene: %1$s</string>
 
     <!-- Player fragment -->
     <string name="player_season_hint">Seisoen (2021–2023)</string>
@@ -203,6 +206,10 @@
     <string name="player_rating_na">NVT</string>
     <string name="player_season_invalid_error">Geldige seisoene: 2021–2023</string>
 
+    <!-- Transfers / common -->
+    <string name="transfer_type_label">Tipe: %1$s</string>
+    <string name="not_available">NVT</string>
+
     <!-- Dialog titles -->
     <string name="select_league_title">Kies liga</string>
     <string name="label_season">Seisoen:</string>
@@ -219,4 +226,36 @@
     <string name="favorites_remove_team_confirm">Is jy seker jy wil %1$s verwyder?</string>
     <string name="favorites_team_removed">Gunsteling span verwyder</string>
 
+    <!-- Settings additions -->
+    <string name="settings_choose_favorite">Kies gunsteling span en speler</string>
+    <string name="settings_edit_user_details">Wysig gebruikersbesonderhede</string>
+
+    <!-- Common actions -->
+    <string name="action_clear">Maak skoon</string>
+
+    <!-- Team fragment strings -->
+    <string name="team_season_hint">Voer seisoen in (2021–2023)</string>
+    <string name="team_recent_form">Onlangse vorm</string>
+    <string name="team_season_overview">Seisoen oorsig</string>
+    <string name="team_goal_statistics">Doelstatistieke</string>
+    <string name="team_goals_for">Doele vir</string>
+    <string name="team_goals_against">Doele teen</string>
+    <string name="team_season_records">Seisoenrekords</string>
+    <string name="team_biggest_win">Grootste oorwinning:</string>
+    <string name="team_clean_sheets">Skoon velle:</string>
+    <string name="team_winning_streak">Wenreeks:</string>
+    <string name="team_failed_to_score">Kon nie doel aanteken nie:</string>
+    <string name="team_yellow_cards">Geel kaarte:</string>
+    <string name="team_red_cards">Rooi kaarte:</string>
+    <string name="team_most_used_formations">Mees gebruikte formasies</string>
+
+    <!-- Common default values -->
+    <string name="season_2023_default">2023</string>
+
+    <!-- Favorites a11y additions -->
+    <string name="favorite_player_photo_desc">Gunsteling spelerfoto</string>
+    <string name="remove_favorite_player_desc">Verwyder gunsteling speler</string>
+
+    <!-- Match additions -->
+    <string name="score_separator">-</string>
 </resources>

@@ -345,7 +345,7 @@
                                         android:id="@+id/imgFavoritePlayerPhoto"
                                         android:layout_width="64dp"
                                         android:layout_height="64dp"
-                                        android:contentDescription="Favorite Player Photo"
+                                        android:contentDescription="@string/favorite_player_photo_desc"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
                                         tools:src="@drawable/player_w" />
@@ -400,7 +400,7 @@
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:background="?attr/selectableItemBackgroundBorderless"
-                                        android:contentDescription="Remove favorite player"
+                                        android:contentDescription="@string/remove_favorite_player_desc"
                                         android:src="@drawable/ic_delete"
                                         app:tint="#FF5252"
                                         app:layout_constraintBottom_toBottomOf="@id/imgFavoritePlayerPhoto"

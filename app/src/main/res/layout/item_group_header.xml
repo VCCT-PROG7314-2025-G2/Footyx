@@ -28,7 +28,7 @@
             android:id="@+id/group_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Group A"
+            android:text="@string/standings_group_a"
             android:textColor="#AFAFAF"
             android:textSize="16sp"
             android:textStyle="bold" />

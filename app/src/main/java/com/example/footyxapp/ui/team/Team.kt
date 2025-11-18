@@ -131,7 +131,7 @@ class Team : Fragment(), SearchableFragment {
                 
                 // Visual feedback for invalid season
                 if (seasonText.isNotEmpty() && (season == null || season !in 2021..2023)) {
-                    binding.editSeason.error = "Valid seasons: 2021-2023"
+                    binding.editSeason.error = getString(R.string.player_season_invalid_error)
                 } else {
                     binding.editSeason.error = null
                 }

@@ -57,10 +57,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
-                    android:hint="Enter season (2021-2023)"
+                    android:hint="@string/team_season_hint"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:text="2023"
+                    android:text="@string/season_2023_default"
                     android:textColor="@android:color/white"
                     android:textColorHint="#AFAFAF" />
 
@@ -70,13 +70,13 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:backgroundTint="@color/primary_green"
-                    android:text="Clear"
+                    android:text="@string/action_clear"
                     android:textColor="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Season:"
+                    android:text="@string/label_season"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:layout_marginEnd="12dp" />
@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select League:"
+                    android:text="@string/select_league_title"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -210,7 +210,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:text="Recent Form"
+                        android:text="@string/team_recent_form"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -247,7 +247,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
-                        android:text="Season Overview"
+                        android:text="@string/team_season_overview"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -320,7 +320,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Goal Statistics"
+                        android:text="@string/team_goal_statistics"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />

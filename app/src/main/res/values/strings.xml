@@ -167,6 +167,8 @@
     <string name="leagues_column_played">P</string>
     <string name="leagues_column_goal_difference">GD</string>
     <string name="leagues_column_points">Pts</string>
+    <string name="leagues_no_available_seasons">No available seasons (2021–2023) for this league</string>
+    <string name="leagues_seasons_label">Seasons: %1$s</string>
 
     <!-- Player fragment -->
     <string name="player_season_hint">Season (2021-2023)</string>
@@ -212,6 +214,10 @@
     <string name="player_rating_na">N/A</string>
     <string name="player_season_invalid_error">Valid seasons: 2021-2023</string>
 
+    <!-- Transfers / common -->
+    <string name="transfer_type_label">Type: %1$s</string>
+    <string name="not_available">N/A</string>
+
     <!-- Dialog titles -->
     <string name="select_league_title">Select League</string>
     <string name="label_season">Season:</string>
@@ -228,4 +234,47 @@
     <string name="favorites_remove_team_confirm">Are you sure you want to remove %1$s?</string>
     <string name="favorites_team_removed">Favorite team removed</string>
 
+    <!-- Settings additions -->
+    <string name="settings_choose_favorite">Choose favorite team and player</string>
+    <string name="settings_edit_user_details">Edit User Details</string>
+
+    <!-- Common actions -->
+    <string name="action_clear">Clear</string>
+
+    <!-- Team fragment strings -->
+    <string name="team_season_hint">Enter season (2021-2023)</string>
+    <string name="team_recent_form">Recent Form</string>
+    <string name="team_season_overview">Season Overview</string>
+    <string name="team_goal_statistics">Goal Statistics</string>
+    <string name="team_goals_for">Goals For</string>
+    <string name="team_goals_against">Goals Against</string>
+    <string name="team_season_records">Season Records</string>
+    <string name="team_biggest_win">Biggest Win:</string>
+    <string name="team_clean_sheets">Clean Sheets:</string>
+    <string name="team_winning_streak">Winning Streak:</string>
+    <string name="team_failed_to_score">Failed to Score:</string>
+    <string name="team_yellow_cards">Yellow Cards:</string>
+    <string name="team_red_cards">Red Cards:</string>
+    <string name="team_most_used_formations">Most Used Formations</string>
+
+    <!-- Common default values -->
+    <string name="season_2023_default">2023</string>
+
+    <!-- Favorites a11y additions -->
+    <string name="favorite_player_photo_desc">Favorite Player Photo</string>
+    <string name="remove_favorite_player_desc">Remove favorite player</string>
+
+    <!-- Match additions -->
+    <string name="score_separator">-</string>
+    <!-- Standings legend and groups -->
+    <string name="standings_legend_title">Legend</string>
+    <string name="standings_cl_label">CL</string>
+    <string name="standings_el_label">EL</string>
+    <string name="standings_ecl_label">ECL</string>
+    <string name="standings_rel_label">REL</string>
+    <string name="standings_group_a">Group A</string>
+
+    <!-- Favorites item -->
+    <string name="default_badge_text">DEFAULT</string>
+    <string name="set_default_team_desc">Set as default team</string>
 </resources>

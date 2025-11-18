@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +20,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Context.MODE_PRIVATE
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -38,10 +41,15 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val settingsPrefs = getSharedPreferences("settings_prefs", MODE_PRIVATE)
+        val lang = settingsPrefs.getString("language", "english")
+        val locales = if (lang == "afrikaans") LocaleListCompat.create(java.util.Locale("af")) else LocaleListCompat.create(java.util.Locale("en"))
+        AppCompatDelegate.setApplicationLocales(locales)
+
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setContentView(R.layout.activity_register)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.register)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

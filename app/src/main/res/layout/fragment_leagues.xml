@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Select Season"
+                android:text="@string/leagues_select_season"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -136,7 +136,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2.5"
-            android:text="Team"
+            android:text="@string/leagues_column_team"
             android:textColor="#AFAFAF" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="P"
+            android:text="@string/leagues_column_played"
             android:textColor="#AFAFAF" />
 
         <TextView
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="GD"
+            android:text="@string/leagues_column_goal_difference"
             android:textColor="#AFAFAF" />
 
         <TextView
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Pts"
+            android:text="@string/leagues_column_points"
             android:textColor="#AFAFAF"
             android:textStyle="bold" />
     </LinearLayout>

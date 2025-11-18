@@ -25,7 +25,7 @@ import com.example.footyxapp.utils.UserSyncWorker
 import java.util.UUID
 import com.google.firebase.auth.FirebaseAuth
 
-class EditActivity : AppCompatActivity() {
+class  EditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditBinding
 
     // Register  Related Vars

@@ -46,6 +46,7 @@ class TransferAdapter : ListAdapter<HomeViewModel.TransferWithPlayer, TransferAd
                 
                 // Transfer type
                 val typeText = transfer.type?.uppercase() ?: "N/A"
+
                 textTransferType.text = typeText
                 
                 // From team
