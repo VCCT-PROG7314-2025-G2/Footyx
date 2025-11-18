@@ -106,7 +106,7 @@ FOOTBALL_API_KEY=your_api_key_here
 
 A Default API key can be used 
 ```bash
-   57571f496885a4d2a16d964f42c29f46
+   68918e4ba305b5ba31a29efdce093060
 ```
 
 10. Click ▶ **Run** to build and launch the app in the emulator or a connected Android device.
