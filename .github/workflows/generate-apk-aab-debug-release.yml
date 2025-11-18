@@ -6,8 +6,9 @@ env:
 
   # The name of the Play Store
   playstore_name: Footyx
-on:
+
 # Where release is written
+on:
   push:
     branches:
     - 'main'
