@@ -11,6 +11,8 @@ import com.example.footyxapp.data.model.PlayerData
 import com.example.footyxapp.databinding.ActivityFavoritesBinding
 import com.example.footyxapp.ui.favorites.dialog.TeamSearchDialogFragment
 import com.example.footyxapp.ui.favorites.dialog.PlayerSearchDialogFragment
+import com.example.footyxapp.utils.MatchSubscriptionManager
+import java.util.*
 
 class FavoritesActivity : AppCompatActivity() {
 
@@ -217,9 +219,44 @@ class FavoritesActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
         
+        // Subscribe to team matches for notifications
+        subscribeToTeamMatches(teamData.team.id.toString(), teamData.team.name)
+        
         loadFavoriteTeam()
     }
-
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun getUserId(): String? {
+        val userPrefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        return userPrefs.getString("user_uid", null)
+    }
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun subscribeToTeamMatches(teamId: String, teamName: String) {
+        val userId = getUserId() ?: return
+        
+        // Check if push notifications are enabled
+        val settingsPrefs = getSharedPreferences("settings_prefs", MODE_PRIVATE)
+        val pushNotificationsEnabled = settingsPrefs.getBoolean("push_notifications_enabled", false)
+        
+        if (!pushNotificationsEnabled) {
+            return
+        }
+        
+        // TODO: Query API for upcoming matches for this team
+        // For now, we'll subscribe to matches when they're available
+        // This is a placeholder - actual implementation would query the API for fixtures
+        // Example: Get upcoming matches from API and subscribe to each match
+        // For now, we'll create a placeholder subscription that will be updated when matches are available
+        
+        // Note: Actual match subscription should happen when:
+        // 1. API endpoint for fixtures is available
+        // 2. Match data is retrieved
+        // 3. Each match is subscribed with matchId, teamId, teamName, matchDate
+    }
+    
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     private fun showRemoveTeamDialog() {
@@ -238,7 +275,16 @@ class FavoritesActivity : AppCompatActivity() {
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
     private fun removeFavoriteTeam() {
+        val favorite = favoritesManager.getFavoriteTeam()
+        val teamId = favorite?.teamData?.team?.id?.toString()
+        
         favoritesManager.clearFavoriteTeam()
+        
+        // Unsubscribe from team matches
+        if (teamId != null) {
+            unsubscribeFromTeamMatches(teamId)
+        }
+        
         Toast.makeText(
             this,
             "Favorite team removed",
@@ -246,7 +292,17 @@ class FavoritesActivity : AppCompatActivity() {
         ).show()
         loadFavoriteTeam()
     }
-
+    
+    //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
+    
+    private fun unsubscribeFromTeamMatches(teamId: String) {
+        val userId = getUserId() ?: return
+        
+        MatchSubscriptionManager.unsubscribeFromTeamMatches(userId, teamId) { count ->
+            // Matches unsubscribed
+        }
+    }
+    
     //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°//
 
 }

@@ -91,19 +91,18 @@ class LoginActivity : AppCompatActivity() {
         //---------------------------------------------------------------------------------------------------------------------------------------//
         // Initialize Views
         //---------------------------------------------------------------------------------------------------------------------------------------//
-        inputEmail = findViewById<EditText>(R.id.login_email)
-        inputPassword = findViewById<EditText>(R.id.login_password)
+        inputEmail = findViewById(R.id.login_email)
+        inputPassword = findViewById(R.id.login_password)
         userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
-        // Initiate Firebase Variables
         auth = Firebase.auth
         credentialManager = CredentialManager.create(this)
 
-        // Sign In With Google
-        binding.loginGoogleSignInBtn.setOnClickListener{
+// Google Sign-In
+        binding.loginGoogleSignInBtn.setOnClickListener {
             startCredentialSignIn()
-
         }
+
         binding.loginRegisterBtn.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -112,55 +111,72 @@ class LoginActivity : AppCompatActivity() {
             val email = inputEmail.text.toString().trim().lowercase()
             val password = inputPassword.text.toString().trim()
 
-            if (validateInput(email, password)) {
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            user?.let {
-                                val db = FirebaseFirestore.getInstance()
-                                val userRef = db.collection("users").document(it.uid)
-                                userRef.get().addOnSuccessListener { doc ->
-                                    if (!doc.exists()) {
-                                        val userData = mapOf(
-                                            "uid" to it.uid,
-                                            "name" to "",
-                                            "email" to email,
-                                            "photoUrl" to "",
-                                            "password" to password,
-                                            "createdAt" to FieldValue.serverTimestamp()
-                                        )
-                                        userRef.set(userData)
-                                    }
-                                }
-                            }
-
-                            val sharedPref = getSharedPreferences("user_prefs", MODE_PRIVATE)
-                            with(sharedPref.edit()) {
-                                putBoolean("is_logged_in", true)
-                                putString("user_uid", user?.uid ?: "")
-                                apply()
-                            }
-
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            val msg = when (val ex = task.exception) {
-                                is com.google.firebase.auth.FirebaseAuthInvalidUserException -> "Account not found. Please register."
-                                is com.google.firebase.auth.FirebaseAuthInvalidCredentialsException -> "Incorrect password."
-                                is com.google.firebase.auth.FirebaseAuthException -> ex.localizedMessage ?: "Login failed"
-                                else -> ex?.localizedMessage ?: "Login failed"
-                            }
-                            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-                        }
-                    }
+            if (!validateInput(email, password)) {
+                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser ?: return@addOnCompleteListener
+                        val uid = user.uid
+
+                        // Create Firestore user if not exists
+                        val db = FirebaseFirestore.getInstance()
+                        val userRef = db.collection("users").document(uid)
+
+                        userRef.get().addOnSuccessListener { doc ->
+                            if (!doc.exists()) {
+                                val userData = mapOf(
+                                    "uid" to uid,
+                                    "name" to "",
+                                    "email" to email,
+                                    "photoUrl" to "",
+                                    "password" to password,
+                                    "createdAt" to FieldValue.serverTimestamp()
+                                )
+                                userRef.set(userData)
+                            }
+                        }
+
+                        // Save locally
+                        getSharedPreferences("user_prefs", MODE_PRIVATE)
+                            .edit()
+                            .putBoolean("is_logged_in", true)
+                            .putString("user_uid", uid)
+                            .apply()
+
+                        // Initialize FCM token
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            uid
+                        )
+
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+
+                    } else {
+                        val msg = when (val ex = task.exception) {
+                            is com.google.firebase.auth.FirebaseAuthInvalidUserException ->
+                                "Account not found. Please register."
+                            is com.google.firebase.auth.FirebaseAuthInvalidCredentialsException ->
+                                "Incorrect password."
+                            is com.google.firebase.auth.FirebaseAuthException ->
+                                ex.localizedMessage ?: "Login failed"
+                            else -> ex?.localizedMessage ?: "Login failed"
+                        }
+                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
-        // Biometric Login button
+
+// Biometric login
         binding.loginBiometric.setOnClickListener {
             showBiometricPrompt()
         }
+
 
     }
     //________________________________________________________ Google Sign in Related____________________________________
@@ -237,6 +253,15 @@ class LoginActivity : AppCompatActivity() {
                         }
                        apply()
                     }
+                    
+                    // Initialize FCM token for notifications
+                    if (user != null) {
+                        com.example.footyxapp.utils.NotificationTokenManager.initializeTokenForUser(
+                            this@LoginActivity,
+                            user.uid
+                        )
+                    }
+                    
                     updateUI(user)
                 }else{
                     Log.w(TAG, "signInWithCredential:failure", task.exception)

@@ -23,6 +23,16 @@
     <string name="settings_biometric_description">Use fingerprint or face unlock</string>
     <string name="settings_logout">Log Out</string>
     <string name="settings_back">Back</string>
+    <string name="settings_push_notifications">Push Notifications</string>
+    
+    <!-- Notification Strings -->
+    <string name="default_notification_channel_id">footyx_default_channel</string>
+    <string name="notification_channel_match_reminders">Match Reminders</string>
+    <string name="notification_channel_goal_alerts">Goal Alerts</string>
+    <string name="notification_channel_final_score">Final Score</string>
+    <string name="notification_match_reminder_title">Match Starting Soon</string>
+    <string name="notification_goal_alert_title">Goal!</string>
+    <string name="notification_final_score_title">Match Finished</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
