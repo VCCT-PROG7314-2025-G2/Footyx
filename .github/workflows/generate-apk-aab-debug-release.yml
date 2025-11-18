@@ -28,12 +28,24 @@ jobs:
       - name: Set repository name as env variable
         run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
 
-      - name: Set Up JDK
+      - name: Set Up JDK (primary: temurin, fallback to zulu if needed)
+        id: setup-java
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu' # See 'Supported distributions' for available options
-          java-version: '17'
+          distribution: 'temurin' 
+          java-version: '17'      
+          java-package: 'jdk'
+          check-latest: false
           cache: 'gradle'
+
+      # If setup-java fails,
+      # install system OpenJDK as a fallback so the build continues.
+      - name: Fallback: Install OpenJDK 17 via apt if setup-java failed
+        if: ${{ failure() }}
+        run: |
+          echo "Primary setup-java action failed; installing openjdk-17-jdk via apt (fallback)"
+          sudo apt-get update;
+          sudo apt-get install -y openjdk-17-jdk
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
