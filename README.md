@@ -44,7 +44,7 @@ Offline Mode Sync
 
 Multi-Language Support
 * English
-* Afrikaans
+* [Afrikaans](MLS.md)
 
 ---
 
