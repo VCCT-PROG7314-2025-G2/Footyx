@@ -41,7 +41,7 @@ jobs:
       # If setup-java fails,
       # install system OpenJDK as a fallback so the build continues.
       - name: Fallback: Install OpenJDK 17 via apt if setup-java failed
-        if: steps.setup-java.outcome == 'failure'
+        if: ${{ steps.setup-java.outcome == 'failure' }}
         run: |
           echo "Primary setup-java action failed; installing openjdk-17-jdk via apt (fallback)"
           sudo apt-get update;
