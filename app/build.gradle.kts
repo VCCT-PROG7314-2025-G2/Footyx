@@ -53,6 +53,10 @@ android {
         viewBinding = true
         buildConfig = true  // Enable BuildConfig generation
     }
+    
+    lint {
+        disable.add("MissingTranslation")
+    }
 }
 
 dependencies {
